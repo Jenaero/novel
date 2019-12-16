@@ -40,7 +40,7 @@ public final class NovelSpiderUtil {
 	private static void init() {
 		SAXReader reader = new SAXReader();
 		try {
-            URL resource = NovelSpiderUtil.class.getClassLoader().getResource(confPath);
+            URL resource = Thread.currentThread().getContextClassLoader().getResource(confPath);
             if (null == resource || null == resource.getFile()){
             	throw new RuntimeException(confPath+" 路径不存在");
 			}
@@ -158,6 +158,9 @@ public final class NovelSpiderUtil {
 	 * @throws ParseException
 	 */
 	public static Date getDate(String dateStr, String pattern) throws ParseException {
+		if ("连载".equals(dateStr)){
+			return new Date();
+		}
 		if ("MM-dd".equals(pattern)) {
 			pattern = "yyyy-MM-dd";
 			dateStr = getDateField(Calendar.YEAR) + "-" + dateStr;

@@ -49,6 +49,33 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<!--默认也是这个位置，这里把service下的xml文件拷过来-->
+							<outputDirectory>${basedir}/target/classes/</outputDirectory>
+							<resources>
+								<!-- 将novel-service中的配置文件复制到该宿主工程中 -->
+								<resource>
+									<directory>${basedir}/../../novel-service/src/main/resources</directory>
+									<includes>
+										<include>rule/*.xml</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
