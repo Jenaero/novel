@@ -3,52 +3,53 @@ package com.xiaokedou.novel.domain.po;
 import java.util.Date;
 
 public class Novel {
+
     private Long id;
-
+    //书名
     private String name;
-
+    //作者
     private String author;
-
+    //封面的链接
     private String img;
-
+    //收藏数
     private Integer collection;
-
+    //小说长度
     private Integer length;
-
+    //总点击数
     private Integer totalClick;
-
+    //本月点击
     private Integer monthClick;
-
+    //本周点击
     private Integer weekClick;
-
+    //总推荐数
     private Integer totalRecommend;
-
+    //本月推荐
     private Integer monthRecommend;
-
+    //本周推荐
     private Integer weekRecommend;
-
+    //小说简介
     private String introduction;
-
+    //小说评论
     private String comment;
-
+    //小说详情链接
     private String novelUrl;
-
+    //小说章节链接
     private String chapterUrl;
-
+    //小说的类别：如武侠修真、都市言情
     private String type;
-
+    //最后一章的章节名
     private String lastUpdateChapter;
-
+    //最后一章的url
     private String lastUpdateChapterUrl;
-
+    //小说最后的更新时间
     private Date lastUpdateTime;
-
+    //小说的状态：1-连载 2-完结
     private Integer status;
-
+    //书名的首字母
     private String firstLetter;
-
+    //小说平台的id
     private Integer platformId;
-
+    //入库时间
     private Date addTime;
 
     public Long getId() {
