@@ -4,8 +4,8 @@
 	<site>
 		<title>笔下文学</title>
 		<charset>UTF-8</charset>
-		<domain>www.bxwx9.org</domain>
-		<url>https://www.bxwx9.org/</url>
+		<domain>www.bxwx8.org</domain>
+		<url>https://www.bxwx8.org/</url>
 		<chapter-list-selector>#TabCss dd a</chapter-list-selector>
 		<chapter-detail-title-selector>#title</chapter-detail-title-selector>
 		<chapter-detail-content-selector>#content</chapter-detail-content-selector>

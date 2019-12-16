@@ -49,7 +49,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                     INovelSpider spider = NovelSpiderFactory.getNovelSpider(value);
                     Iterator <List <Novel>> iterator = spider.iterator(value, 10);
                     while (iterator.hasNext()) {
-                        System.err.println("开始抓取[" + key + "] 的 URL:" + spider.next());
+                        System.err.println(Thread.currentThread().getName()+"开始抓取[" + key + "] 的 URL:" + spider.next());
                         List <Novel> novels = iterator.next();
                         for (Novel novel : novels) {
                             novel.setFirstLetter(key.charAt(0) + "");    //设置小说的名字的首字母
