@@ -37,6 +37,8 @@ public class NovelInfo {
 
     private String lastUpdateChapter;
 
+	private String lastUpdateChapterUrl;
+
     private Date lastUpdateTime;
 
     private Integer status;
@@ -175,6 +177,14 @@ public class NovelInfo {
 
 	public void setLastUpdateChapter(String lastUpdateChapter) {
 		this.lastUpdateChapter = lastUpdateChapter;
+	}
+
+	public String getLastUpdateChapterUrl() {
+		return lastUpdateChapterUrl;
+	}
+
+	public void setLastUpdateChapterUrl(String lastUpdateChapterUrl) {
+		this.lastUpdateChapterUrl = lastUpdateChapterUrl;
 	}
 
 	public Date getLastUpdateTime() {

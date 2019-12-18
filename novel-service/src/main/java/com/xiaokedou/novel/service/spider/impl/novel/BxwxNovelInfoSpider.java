@@ -8,11 +8,34 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.util.Date;
+
 public class BxwxNovelInfoSpider extends AbstractNovelInfoSpider {
 
     @Override
     public NovelInfo getNovelInfo(String url) {
         try {
+//            NovelInfo novelInfo = new NovelInfo();
+//            String result = super.crawl(url);
+//            Document doc = Jsoup.parse(result);
+//            doc.setBaseUri(url);
+//            String novelUrl = url;
+//            String img = doc.select("#fmimg").first().getElementsByTag("img").attr("src");
+//            String author = doc.selectFirst("#info p a").text();
+//            String chapterUrl = url;
+//            String lastChapterUrl = doc.select("#info p a").get(4).absUrl("href");
+//            String lastChapter = doc.select("#info p a").get(4).text();
+//            String introduction = doc.select("#intro p").first().text();
+//            novelInfo.setNovelUrl(novelUrl);
+//            novelInfo.setChapterUrl(chapterUrl);
+//            novelInfo.setLastUpdateChapter(lastChapter);
+//            novelInfo.setLastUpdateChapterUrl(lastChapterUrl);
+//            novelInfo.setLastUpdateTime(new Date());
+//            novelInfo.setImg(img);
+//            novelInfo.setAuthor(author);
+//            novelInfo.setIntroduction(introduction);
+//            novelInfo.setStatus(1);
+
             String result = super.crawl(url);
             Document doc = Jsoup.parse(result);
             doc.setBaseUri(url);

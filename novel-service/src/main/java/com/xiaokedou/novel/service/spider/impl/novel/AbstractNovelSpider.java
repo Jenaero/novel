@@ -39,7 +39,7 @@ public abstract class AbstractNovelSpider extends AbstractSpider implements INov
 	 */
 	protected Elements getsTr(String url, Integer maxTryTimes) throws Exception {
 		maxTryTimes = maxTryTimes == null ? INovelSpider.MAX_TRY_TIMES : maxTryTimes;
-		Elements trs = null;
+		Elements lis = null;
 		for (int i = 0; i < maxTryTimes ; i++) {
 			try {
 				String result = super.crawl(url);
@@ -48,7 +48,7 @@ public abstract class AbstractNovelSpider extends AbstractSpider implements INov
 				if (novelSelector == null) throw new RuntimeException(NovelSiteEnum.getEnumByUrl(url).getUrl() + ",url=" + url + "目前不支持抓取小说列表");
 				Document doc = Jsoup.parse(result);
 				doc.setBaseUri(url);
-				trs = doc.select(novelSelector);
+				lis = doc.select(novelSelector);
 				
 				String nextPageSelector = context.get("novel-next-page-selector");
 				if (nextPageSelector != null) {
@@ -61,7 +61,7 @@ public abstract class AbstractNovelSpider extends AbstractSpider implements INov
 						nextPage = "";
 					}
 				}
-				return trs;
+				return lis;
 			} catch (Exception e) {
 				
 			}

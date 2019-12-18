@@ -28,6 +28,8 @@ public final class NovelSpiderFactory {
         switch (novelSiteEnum) {
             case Bxwx:
                 return bxwxNovelSpider == null ? new BxwxNovelSpider() : bxwxNovelSpider;
+            case Bxwx2:
+                return bxwxNovelSpider == null ? new BxwxNovelSpider() : bxwxNovelSpider;
             default:
                 throw new RuntimeException(url + "暂时不被支持");
         }
@@ -37,6 +39,8 @@ public final class NovelSpiderFactory {
         NovelSiteEnum novelSiteEnum = NovelSiteEnum.getEnumByUrl(url);
         switch (novelSiteEnum) {
             case Bxwx:
+                return bxwxNovelInfoSpider == null ? new BxwxNovelInfoSpider() : bxwxNovelInfoSpider;
+            case Bxwx2:
                 return bxwxNovelInfoSpider == null ? new BxwxNovelInfoSpider() : bxwxNovelInfoSpider;
             default:
                 throw new RuntimeException(url + "暂时不被支持");
@@ -48,6 +52,8 @@ public final class NovelSpiderFactory {
         switch (novelSiteEnum) {
             case Bxwx:
                 return bxwxChapterSpider == null ? new BxwxChapterSpider() : bxwxChapterSpider;
+            case Bxwx2:
+                return bxwxChapterSpider == null ? new BxwxChapterSpider() : bxwxChapterSpider;
             default:
                 throw new RuntimeException(url + "暂时不被支持");
         }
@@ -57,6 +63,8 @@ public final class NovelSpiderFactory {
         NovelSiteEnum novelSiteEnum = NovelSiteEnum.getEnumByUrl(url);
         switch (novelSiteEnum) {
             case Bxwx:
+                return defaultChapterDetailSpider == null ? new DefaultChapterDetailSpider() : defaultChapterDetailSpider;
+            case Bxwx2:
                 return defaultChapterDetailSpider == null ? new DefaultChapterDetailSpider() : defaultChapterDetailSpider;
             default:
                 throw new RuntimeException(url + "暂时不被支持");

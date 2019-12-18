@@ -142,6 +142,7 @@ public class ShowNovelDetailsController {
 		ObjectMapper mapper = NovelUtils.mapper;
 		String url;
 		try {
+			//1、获取键值对
 			Map<String,List<Integer>> keyMap = mapper.readValue(keys, Map.class);
 			String encrChapterUrl = EncryptUtils.decryptNovelUrl(encr,"chapterUrl",keyMap);
 			url = EncryptUtils.decrypt(encrChapterUrl);

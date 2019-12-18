@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class ChapterServiceImpl implements ChapterService {
     {
-        NovelSpiderUtil.setConfPath("rule/Spider-Rule.xml");
+        NovelSpiderUtil.setConfPath("D:\\learns\\novel\\novel-service\\src\\main\\resources\\rule\\Spider-Rule.xml");
 //	NovelSpiderUtil.setConfPath("/conf/novelSpider/Spider-Rule.xml");
     }
 
@@ -47,11 +47,14 @@ public class ChapterServiceImpl implements ChapterService {
     @Override
     public ChapterList getChapters(String url, int offset, int length) {
         IChapterSpider chapterSpider = NovelSpiderFactory.getChapterSpider(url);
+        //获取章节列表dom
         Elements elements = chapterSpider.getChapterElements(url);
         List <Chapter> chapters = chapterSpider.getChapterFromElements(elements, offset, length);
         int size = elements.size();
+        //拼接chapters 列表
         chapters = chapterSpider.getChapterFromElements(elements, offset, length);
         ChapterList chapterList = new ChapterList();
+        //返回的每章节地址加密
         chapterList.setChapters(EncryptUtils.encryptChapters(chapters));
         chapterList.setTotal(size);
         return chapterList;

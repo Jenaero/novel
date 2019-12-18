@@ -14,7 +14,7 @@ import java.util.*;
 public final class NovelSpiderUtil {
 	private static final Map<NovelSiteEnum, Map<String, String>> CONTEXT_MAP = new HashMap<>();
 	private static  NovelSiteEnum novelSiteEnum;
-	private static String confPath= "rule/Spider-Rule.xml";
+	private static String confPath= "D:\\learns\\novel\\novel-service\\src\\main\\resources\\rule\\Spider-Rule.xml";
 
 	public static String getConfPath() {
 		return confPath;
@@ -40,11 +40,7 @@ public final class NovelSpiderUtil {
 	private static void init() {
 		SAXReader reader = new SAXReader();
 		try {
-            URL resource = Thread.currentThread().getContextClassLoader().getResource(confPath);
-            if (null == resource || null == resource.getFile()){
-            	throw new RuntimeException(confPath+" 路径不存在");
-			}
-            Document doc = reader.read(new File(resource.getFile()));
+            Document doc = reader.read(new File(confPath));
 //            Document doc = reader.read(new File(confPath));
 //			Document doc = reader.read(new File("D:/code/webdevelop/conf/Spider-Rule.xml"));
 //			Document doc = reader.read(new File("/home/williams/novel/conf/Spider-Rule.xml"));

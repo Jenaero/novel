@@ -1,5 +1,6 @@
 package com.xiaokedou.novel.spider.storage.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.xiaokedou.novel.dao.mapper.NovelMapper;
 import com.xiaokedou.novel.domain.po.Novel;
 import com.xiaokedou.novel.service.spider.INovelSpider;
@@ -38,7 +39,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                     tasks.size(),
                     keepAliveTime,
                     TimeUnit.SECONDS,
-                    new LinkedBlockingDeque <>(3000),
+                    new LinkedBlockingDeque <>(100000),
                     new NamedThreadFactory("novel")
             );
             List <Future <String>> futures = new ArrayList <>(tasks.size());
@@ -54,6 +55,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                         for (Novel novel : novels) {
                             novel.setFirstLetter(key.charAt(0) + "");    //设置小说的名字的首字母
                         }
+                        System.out.println(JSON.toJSONString(novels));
                         novelMapper = SpringUtil.getApplicationContext().getBean(NovelMapper.class);
                         novelMapper.batchInsert(novels);
                         Thread.sleep(1_000);
