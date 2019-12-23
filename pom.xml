@@ -57,6 +57,7 @@
 		<jackson.databind.version>2.9.5</jackson.databind.version>
 		<esotericsoftware.kryo.version>4.0.2</esotericsoftware.kryo.version>
 		<jedis.version>2.9.0</jedis.version>
+        <fastdfs.client.version>1.26.5</fastdfs.client.version>
 	</properties>
 
 	<dependencyManagement>
@@ -193,6 +194,13 @@
 				<artifactId>spring-boot-starter-tomcat</artifactId>
 				<version>${spring.boot.version}</version>
 				<scope>compile</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/com.github.tobato/fastdfs-client -->
+			<dependency>
+				<groupId>com.github.tobato</groupId>
+				<artifactId>fastdfs-client</artifactId>
+				<version>${fastdfs.client.version}</version>
 			</dependency>
 
 		</dependencies>

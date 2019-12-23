@@ -2,15 +2,20 @@ package com.xiaokedou.novel.service.spider.impl.novel;
 
 
 import com.xiaokedou.novel.domain.po.NovelInfo;
+import com.xiaokedou.novel.service.util.FastdfsClientUtil;
 import com.xiaokedou.novel.service.util.NovelSpiderUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.annotation.Resource;
 import java.util.Date;
 
 public class BxwxNovelInfoSpider extends AbstractNovelInfoSpider {
+
+    @Resource
+    private FastdfsClientUtil fastdfsClientUtil;
 
     @Override
     public NovelInfo getNovelInfo(String url) {
@@ -41,6 +46,8 @@ public class BxwxNovelInfoSpider extends AbstractNovelInfoSpider {
             doc.setBaseUri(url);
             String novelUrl = url;
             String img = doc.select(".picborder").attr("src");
+            //图片入服务器并返回新地址
+            img = fastdfsClientUtil.upload(img);
             Elements elements = doc.getElementsByTag("table").get(2).getElementsByTag("table");
             Element table = elements.get(6);
             Element firstTr = table.getElementsByTag("tr").first();

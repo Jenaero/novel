@@ -1,0 +1,15 @@
+capture:
+  prefix: http://
+  rootpath: /data/img/
+  host: 192.168.10.129/
+
+
+fdfs:
+  so-timeout: 1501
+  connect-timeout: 601
+  thumb-image:                      #缩略图生成参数
+    height: 200
+    width: 200
+  tracker-list:                     #trackerList参数，支持多个
+    - 192.168.10.129:22122
+

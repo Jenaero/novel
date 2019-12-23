@@ -25,6 +25,8 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     useGlobalDataSourceStat: true
 
+
+
   redis:
       # Redis数据库索引（默认为0）
       database: 0
@@ -47,6 +49,11 @@ spring:
         maxIdle: 8
       # 连接池中的最小空闲连接
         minIdle: 0
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: test
 
 
 
