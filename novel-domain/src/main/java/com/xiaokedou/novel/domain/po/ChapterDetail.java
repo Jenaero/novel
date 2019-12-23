@@ -9,9 +9,9 @@ import java.io.Serializable;
 public class ChapterDetail implements Serializable {
     private static final long serialVersionUID = -7303060644500661569L;
     //主键Id
-    private Long id;
+    private String id;
     //小说id
-    private Long novelId;
+    private String novelId;
     //小说
     private String title;
     //文本
@@ -21,7 +21,7 @@ public class ChapterDetail implements Serializable {
     //原站下一章地址
     private String next;
     //下一章主键Id
-    private Long prevId;
+    private String prevId;
     //下一张主键Id
-    private Long nextId;
+    private String nextId;
 }

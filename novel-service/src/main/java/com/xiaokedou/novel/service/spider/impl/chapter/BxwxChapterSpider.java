@@ -1,6 +1,9 @@
 package com.xiaokedou.novel.service.spider.impl.chapter;
 
 import com.xiaokedou.novel.domain.po.Chapter;
+import com.xiaokedou.novel.domain.po.ChapterDetail;
+import com.xiaokedou.novel.domain.po.Novel;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
@@ -85,6 +88,38 @@ public class BxwxChapterSpider extends AbstractChapterSpider {
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
+	}
+
+	/**
+	 * 通过novel获取所有章节
+	 * @param novel
+	 * @return
+	 */
+	public List<Chapter> getChaptersByNovelChapterUrl(Novel novel) {
+		Elements as = super.getChapterElements(novel.getChapterUrl());
+		List <Chapter> chapters = new ArrayList <>();
+
+		for (Element a : as) {
+			Chapter chapter = new Chapter();
+			chapter.setAuthor(novel.getAuthor());
+			chapter.setName(novel.getName());
+			chapter.setNovelId(novel.getId());
+			chapter.setTitle(a.text());
+			chapter.setUrl(a.absUrl("href"));
+			chapters.add(chapter);
+
+		}
+		Collections.sort(chapters, new Comparator<Chapter>() {
+			@Override
+			public int compare(Chapter o1, Chapter o2) {
+				String o1Url = o1.getUrl();
+				String o2Url = o2.getUrl();
+				String o1Index = o1Url.substring(o1Url.lastIndexOf('/') + 1, o1Url.lastIndexOf('.'));
+				String o2Index = o2Url.substring(o2Url.lastIndexOf('/') + 1, o2Url.lastIndexOf('.'));
+				return o1Index.compareTo(o2Index);
+			}
+		});
+		return chapters;
 	}
 
 }

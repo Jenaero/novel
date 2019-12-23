@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Novel {
 
-    private Long id;
+    private String id;
     //书名
     private String name;
     //作者
@@ -52,11 +52,11 @@ public class Novel {
     //入库时间
     private Date addTime;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

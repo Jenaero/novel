@@ -1,6 +1,7 @@
 package com.xiaokedou.novel.service.spider;
 
 import com.xiaokedou.novel.domain.po.Chapter;
+import com.xiaokedou.novel.domain.po.Novel;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -19,6 +20,8 @@ public interface IChapterSpider {
 	 * @return
 	 */
 	public List<Chapter> getChapters(String url, int offset, int length);
+
+	public List<Chapter> getChaptersByNovelChapterUrl(Novel novel);
 
 	public Elements getChapterElements(String url);
 
