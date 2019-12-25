@@ -97,6 +97,14 @@
       #{lastUpdateChapterUrl,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=INTEGER}, #{firstLetter,jdbcType=CHAR}, #{platformId,jdbcType=INTEGER}, 
       #{addTime,jdbcType=TIMESTAMP})
+    ON DUPLICATE KEY UPDATE
+      name=values(name),author=values(author),img=values(img),collection=values(collection),
+      total_recommend=values(total_recommend),month_recommend=values(month_recommend),week_recommend=values(week_recommend),
+      introduction=values(introduction),comment=values(comment),novel_url=values(novel_url),
+      chapter_url=values(chapter_url),type=values(type),
+      last_update_chapter=values(last_update_chapter),last_update_chapter_url=values(last_update_chapter_url),
+      last_update_time=values(last_update_time),status=values(status),first_letter=values(first_letter),
+      platform_id=values(platform_id)
   </insert>
   <insert id="insertSelective" parameterType="Novel" >
     insert into novel
@@ -354,12 +362,13 @@
 
   <insert id="batchInsert" parameterType="java.util.List">
     INSERT INTO novel
-    (name,author,img,collection,length,total_click,month_click,week_click,total_recommend,month_recommend,week_recommend,introduction,
+    (id,name,author,img,collection,length,total_click,month_click,week_click,total_recommend,month_recommend,week_recommend,introduction,
     comment,novel_url,chapter_url,type,last_update_chapter,last_update_chapter_url,
     last_update_time,status,first_letter,platform_id)
     VALUES
     <foreach collection="list" index="index" item="item" separator=",">
       (
+      #{item.id,jdbcType=BIGINT},
       #{item.name,jdbcType=VARCHAR}, #{item.author,jdbcType=VARCHAR},#{item.img,jdbcType=VARCHAR}, #{item.collection,jdbcType=INTEGER},
       #{item.length,jdbcType=INTEGER}, #{item.totalClick,jdbcType=INTEGER}, #{item.monthClick,jdbcType=INTEGER}, #{item.weekClick,jdbcType=INTEGER},
       #{item.totalRecommend,jdbcType=INTEGER},#{item.monthRecommend,jdbcType=INTEGER},#{item.weekRecommend,jdbcType=INTEGER},

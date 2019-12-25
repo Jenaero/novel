@@ -15,40 +15,43 @@ public abstract class AbstractChapterDetailSpider extends AbstractSpider impleme
 
     @Override
     public ChapterDetail getChapterDetail(String url) {
-        try {
-            String result = super.crawl(url);
-            result = result.replace("&nbsp;", " ").replace("<br />", "${line}").replace("<br/>", "${line}");
-            Document doc = Jsoup.parse(result);
-            doc.setBaseUri(url);
-            Map <String, String> contexts = NovelSpiderUtil.getContext(NovelSiteEnum.getEnumByUrl(url));
+        ChapterDetail detail = null;
+        for (int i = 0; i < 3; i++) {
+            try {
+                String result = super.crawl(url);
+                result = result.replace("&nbsp;", " ").replace("<br />", "${line}").replace("<br/>", "${line}");
+                Document doc = Jsoup.parse(result);
+                doc.setBaseUri(url);
+                Map <String, String> contexts = NovelSpiderUtil.getContext(NovelSiteEnum.getEnumByUrl(url));
 
-            //拿标题内容
-            String titleSelector = contexts.get("chapter-detail-title-selector");
-            String[] splits = titleSelector.split("\\,");
-            splits = parseSelector(splits);
-            ChapterDetail detail = new ChapterDetail();
-            detail.setTitle(doc.select(splits[0]).get(Integer.parseInt(splits[1])).text());
+                //拿标题内容
+                String titleSelector = contexts.get("chapter-detail-title-selector");
+                String[] splits = titleSelector.split("\\,");
+                splits = parseSelector(splits);
+                detail = new ChapterDetail();
+                detail.setTitle(doc.select(splits[0]).get(Integer.parseInt(splits[1])).text());
 
-            //拿章节内容
-            String contentSelector = contexts.get("chapter-detail-content-selector");
-            detail.setContent(doc.select(contentSelector).first().text().replace("${line}", "\n"));
+                //拿章节内容
+                String contentSelector = contexts.get("chapter-detail-content-selector");
+                detail.setContent(doc.select(contentSelector).first().text().replace("${line}", "\n"));
 
-            //拿前一章的地址ַ
-            String prevSelector = contexts.get("chapter-detail-prev-selector");
-            splits = prevSelector.split("\\,");
-            splits = parseSelector(splits);
-            detail.setPrev(doc.select(splits[0]).get(Integer.parseInt(splits[1])).absUrl("href"));
+                //拿前一章的地址ַ
+                String prevSelector = contexts.get("chapter-detail-prev-selector");
+                splits = prevSelector.split("\\,");
+                splits = parseSelector(splits);
+                detail.setPrev(doc.select(splits[0]).get(Integer.parseInt(splits[1])).absUrl("href"));
 
-            //拿后一章的地址ַ
-            String nextSelector = contexts.get("chapter-detail-next-selector");
-            splits = nextSelector.split("\\,");
-            splits = parseSelector(splits);
-            detail.setNext(doc.select(splits[0]).get(Integer.parseInt(splits[1])).absUrl("href"));
+                //拿后一章的地址ַ
+                String nextSelector = contexts.get("chapter-detail-next-selector");
+                splits = nextSelector.split("\\,");
+                splits = parseSelector(splits);
+                detail.setNext(doc.select(splits[0]).get(Integer.parseInt(splits[1])).absUrl("href"));
 
-            return detail;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+                return detail;
+            } catch (Exception e) {
+            }
         }
+        throw new RuntimeException(url+",尝试了三次依然下载失败!");
     }
 
     /**

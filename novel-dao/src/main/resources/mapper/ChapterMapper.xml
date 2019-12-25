@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaokedou.novel.dao.mapper.ChapterMapper" >
+  <resultMap id="BaseResultMap" type="Chapter" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="novel_id" property="novelId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    `id`,`novel_id`,`name`,`author`,`title`,`url`,`add_time`
+  </sql>
+
+  <insert id="batchInsert" parameterType="java.util.List">
+    INSERT INTO chapter
+    (`id`,`novel_id`,`name`,`author`,`title`,`url`)
+    VALUES
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+      #{item.id,jdbcType=BIGINT},#{item.novelId,jdbcType=BIGINT},
+      #{item.name,jdbcType=VARCHAR}, #{item.author,jdbcType=VARCHAR},
+      #{item.title,jdbcType=VARCHAR}, #{item.url,jdbcType=VARCHAR}
+      )
+    </foreach>
+#     ON DUPLICATE KEY UPDATE
+#
+#     `novel_id`=values(`novel_id`),`name`=values(name),`author`=values(author),
+#     `title`=values(`title`),`url`=values(`url`)
+  </insert>
+</mapper>

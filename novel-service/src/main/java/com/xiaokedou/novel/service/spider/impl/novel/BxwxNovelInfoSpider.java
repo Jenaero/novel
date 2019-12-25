@@ -4,18 +4,22 @@ package com.xiaokedou.novel.service.spider.impl.novel;
 import com.xiaokedou.novel.domain.po.NovelInfo;
 import com.xiaokedou.novel.service.util.FastdfsClientUtil;
 import com.xiaokedou.novel.service.util.NovelSpiderUtil;
+import com.xiaokedou.novel.service.util.SpringUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import javax.annotation.Resource;
-import java.util.Date;
 
 public class BxwxNovelInfoSpider extends AbstractNovelInfoSpider {
 
     @Resource
     private FastdfsClientUtil fastdfsClientUtil;
+
+    public BxwxNovelInfoSpider() {
+        fastdfsClientUtil = SpringUtil.getApplicationContext().getBean(FastdfsClientUtil.class);
+    }
 
     @Override
     public NovelInfo getNovelInfo(String url) {

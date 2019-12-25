@@ -96,19 +96,7 @@ public class BxwxChapterSpider extends AbstractChapterSpider {
 	 * @return
 	 */
 	public List<Chapter> getChaptersByNovelChapterUrl(Novel novel) {
-		Elements as = super.getChapterElements(novel.getChapterUrl());
-		List <Chapter> chapters = new ArrayList <>();
-
-		for (Element a : as) {
-			Chapter chapter = new Chapter();
-			chapter.setAuthor(novel.getAuthor());
-			chapter.setName(novel.getName());
-			chapter.setNovelId(novel.getId());
-			chapter.setTitle(a.text());
-			chapter.setUrl(a.absUrl("href"));
-			chapters.add(chapter);
-
-		}
+		List <Chapter> chapters = super.getChaptersByNovelChapterUrl(novel);
 		Collections.sort(chapters, new Comparator<Chapter>() {
 			@Override
 			public int compare(Chapter o1, Chapter o2) {

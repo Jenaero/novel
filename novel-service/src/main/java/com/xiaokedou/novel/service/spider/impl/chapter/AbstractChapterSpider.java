@@ -2,6 +2,7 @@ package com.xiaokedou.novel.service.spider.impl.chapter;
 
 import com.xiaokedou.novel.common.enums.NovelSiteEnum;
 import com.xiaokedou.novel.domain.po.Chapter;
+import com.xiaokedou.novel.domain.po.Novel;
 import com.xiaokedou.novel.service.spider.IChapterSpider;
 import com.xiaokedou.novel.service.spider.impl.AbstractSpider;
 import com.xiaokedou.novel.service.util.NovelSpiderUtil;
@@ -11,6 +12,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -99,6 +102,22 @@ public abstract class AbstractChapterSpider extends AbstractSpider implements IC
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    public List<Chapter> getChaptersByNovelChapterUrl(Novel novel) {
+        Elements as = getChapterElements(novel.getChapterUrl());
+        List <Chapter> chapters = new ArrayList <>();
+
+        for (Element a : as) {
+            Chapter chapter = new Chapter();
+            chapter.setAuthor(novel.getAuthor());
+            chapter.setName(novel.getName());
+            chapter.setNovelId(novel.getId());
+            chapter.setTitle(a.text());
+            chapter.setUrl(a.absUrl("href"));
+            chapters.add(chapter);
+        }
+        return chapters;
     }
 
 

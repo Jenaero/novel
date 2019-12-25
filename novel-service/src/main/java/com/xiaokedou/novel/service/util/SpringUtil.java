@@ -1,4 +1,4 @@
-package com.xiaokedou.novel.spider.storage.impl;
+package com.xiaokedou.novel.service.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

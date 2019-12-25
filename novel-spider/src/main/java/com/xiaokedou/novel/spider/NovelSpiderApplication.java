@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @SpringBootApplication
+@ComponentScan("com.xiaokedou.novel")
 @MapperScan("com.xiaokedou.novel.dao.mapper")
 public class NovelSpiderApplication {
 

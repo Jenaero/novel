@@ -6,6 +6,7 @@ import com.xiaokedou.novel.service.util.NovelSpiderHttpGet;
 import com.xiaokedou.novel.service.util.NovelSpiderUtil;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
@@ -23,7 +24,7 @@ public abstract class AbstractSpider {
             String result = EntityUtils.toString(httpResponse.getEntity(), NovelSpiderUtil.getContext(NovelSiteEnum.getEnumByUrl(url)).get("charset"));
             return result;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(url+"\n"+e);
         }
     }
 

@@ -13,9 +13,9 @@ import java.io.Serializable;
 public class Chapter implements Serializable {
     private static final long serialVersionUID = -7574082095190014403L;
     //小说Id
-    private String id;
+    private Long id;
     //章节Id
-    private String novelId;
+    private Long novelId;
     //书名
     private String name;
     //作者
