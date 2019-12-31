@@ -13,7 +13,7 @@
 	<version>${project.parent.version}</version>
 	<name>novel-spider</name>
 	<description>小说-爬虫后端</description>
-	<packaging>war</packaging>
+	<!--<packaging>war</packaging>-->
 
 	<properties>
 		<java.version>1.8</java.version>
