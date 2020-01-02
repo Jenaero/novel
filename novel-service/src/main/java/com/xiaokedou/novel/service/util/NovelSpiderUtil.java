@@ -14,7 +14,7 @@ import java.util.*;
 public final class NovelSpiderUtil {
 	private static final Map<NovelSiteEnum, Map<String, String>> CONTEXT_MAP = new HashMap<>();
 	private static  NovelSiteEnum novelSiteEnum;
-	private static String confPath= "D:\\learns\\novel\\novel-service\\src\\main\\resources\\rule\\Spider-Rule.xml";
+	private static String confPath= "../webapps/Spider-Rule.xml";
 
 	public static String getConfPath() {
 		return confPath;

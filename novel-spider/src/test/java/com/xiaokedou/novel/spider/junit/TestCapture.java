@@ -62,6 +62,14 @@ public class TestCapture {
     }
 
     @Test
+    public void dir(){
+        String rootPath = "../Spider-Rule.xml";
+        File file = new File(rootPath);
+        System.out.println(file.exists());
+        System.out.println(file.getAbsolutePath());
+    }
+
+    @Test
     public void split() {
         String url = "http://www.bxwx8.la/image/176/176787/176787s.jpg";
         String prefix = "http://";

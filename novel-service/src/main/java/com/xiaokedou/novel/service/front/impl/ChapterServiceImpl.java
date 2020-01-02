@@ -20,8 +20,7 @@ import java.util.List;
 @Service
 public class ChapterServiceImpl implements ChapterService {
     {
-        NovelSpiderUtil.setConfPath("D:\\learns\\novel\\novel-service\\src\\main\\resources\\rule\\Spider-Rule.xml");
-//	NovelSpiderUtil.setConfPath("/conf/novelSpider/Spider-Rule.xml");
+        NovelSpiderUtil.setConfPath("../webapps/Spider-Rule.xml");
     }
 
     @RedisAnontation(clazz = EncryptedChapter.class, serialType = RedisAnontation.SerialType.LIST)
