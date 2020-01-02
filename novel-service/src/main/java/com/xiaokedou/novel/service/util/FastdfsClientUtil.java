@@ -4,7 +4,6 @@ import com.github.tobato.fastdfs.domain.fdfs.StorePath;
 import com.github.tobato.fastdfs.domain.fdfs.ThumbImageConfig;
 import com.github.tobato.fastdfs.exception.FdfsUnsupportStorePathException;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -15,10 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 /**
  * FastdfsClientUtil

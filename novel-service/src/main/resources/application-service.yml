@@ -1,7 +1,7 @@
 capture:
   prefix: http://
   rootpath: /data/img/
-  host: 192.168.10.129/
+  host: 154.83.17.144/
 
 
 fdfs:
