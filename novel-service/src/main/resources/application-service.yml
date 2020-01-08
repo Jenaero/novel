@@ -1,7 +1,7 @@
 capture:
   prefix: http://
   rootpath: /data/img/
-  host: 154.83.17.144/
+  host: 45.88.12.69/
 
 
 fdfs:
@@ -11,5 +11,5 @@ fdfs:
     height: 200
     width: 200
   tracker-list:                     #trackerList参数，支持多个
-    - 154.83.17.144:22122
+    - 45.88.12.69:22122
 

@@ -1,8 +1,10 @@
 package com.xiaokedou.novel.domain.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class NovelInfo {
+public class NovelInfo implements Serializable{
+	private static final long serialVersionUID = -6336941415658524065L;
 	private String name;
 
     private String author;

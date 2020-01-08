@@ -1,8 +1,9 @@
 package com.xiaokedou.novel.domain.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Novel {
+public class Novel implements Serializable{
 
     private Long id;
     //书名

@@ -19,7 +19,7 @@ import javax.annotation.Resource;
  * @Description: 切面：查询前先查询redis，如果查询不到穿透到数据库，从数据库查询到数据后，
  * 启动一个线程保存到redis，然后下次查询可直接命中缓存
  */
-//@Component
+@Component
 @Aspect
 public class RedisAspect {
 
