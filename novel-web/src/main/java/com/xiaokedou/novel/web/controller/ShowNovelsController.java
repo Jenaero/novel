@@ -14,18 +14,20 @@ import com.xiaokedou.novel.service.front.NovelService;
 import com.xiaokedou.novel.service.util.EncryptUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/novel/")
 public class ShowNovelsController {
 	@Resource
 	private NovelService novelService;
 	
-	@RequestMapping("searchNovel.action")
+	@RequestMapping(value = "searchNovel.action",method = RequestMethod.POST)
 	public  String searchNovel(HttpServletRequest request,String kw,int index){
 		Pager pager = new Pager();
 		pager.setOffset(index*30);
-		pager.setPageSize(30);
+		pager.setPageSize(20000);
 		List<Novel> novels=novelService.searchNovelByNameAuthor(kw,pager);
 		List<EncryptedNovel> encryptNovels = EncryptUtils.encryptNovels(novels);
 		request.setAttribute("encryptNovels", encryptNovels);

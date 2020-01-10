@@ -5,8 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 pageContext.setAttribute("path", request.getContextPath());
-
 %>
+
 <%@ taglib prefix="pg" uri="http://jsptags.com/tags/navigation/pager"%>
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
 <html>
@@ -21,13 +21,13 @@ pageContext.setAttribute("path", request.getContextPath());
             小蝌蚪书屋小说网站
         </title>
         <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1,user-scalable=no">
-        <link href="img/logo_xkd.png" rel="apple-touch-icon-precomposed" />
-        <link href="img/logo_xkd.png" rel="icon" type="image/x-icon" />
-        <link href="img/logo_xkd.png" rel="shortcut icon" type="image/x-icon" />
-        <link rel="stylesheet" type="text/css" href="css/loadingBar.css">
+        <link href="../img/logo_xkd.png" rel="apple-touch-icon-precomposed" />
+        <link href="../img/logo_xkd.png" rel="icon" type="image/x-icon" />
+        <link href="../img/logo_xkd.png" rel="shortcut icon" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="../css/loadingBar.css">
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
-        <script type="text/javascript" src="script/easying.js"></script>
-        <script src="script/jquery.beattext.js"></script>
+        <script type="text/javascript" src="../script/easying.js"></script>
+        <script src="../script/jquery.beattext.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('p#roloadText').beatText({isAuth:true,beatHeight:"1em",isRotate:false,upTime:100,downTime:100});
@@ -38,7 +38,7 @@ pageContext.setAttribute("path", request.getContextPath());
 <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
       -->
 
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../css/style.css">
 <!-- <script src="script/jquery.js"></script>   -->
 <!-- <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />  -->
 
@@ -58,11 +58,11 @@ pageContext.setAttribute("path", request.getContextPath());
         
     </script>
     <body>
-        <script src="script/require.js">
+        <script src="../script/require.js">
         </script>
         <div class="top">
             <h1 class="fl">
-                <img src="img/logo_xkd.png" width="76" height="32" />
+                <img src="../img/logo_xkd.png" width="76" height="32" />
             </h1>
            <!--  <p class="fr">
                <a href="login.html" class="icon_user"
@@ -73,7 +73,7 @@ pageContext.setAttribute("path", request.getContextPath());
         </div>
         <div class="top_menu">
             <div class="topnav" >
-                <a href="index.html" class="cur">首页 <b></b></a>
+                <a href="../index.html" class="cur">首页 <b></b></a>
                 <!-- <a href="nspd.html">男生<b></b></a> -->
                 <!-- <a href="nvshengpd.html">女生<b></b></a> -->
                 <!-- <a href="chubanshe.html">免费<b></b></a> -->
@@ -92,7 +92,7 @@ pageContext.setAttribute("path", request.getContextPath());
        </div> -->
         <div class="search">
             <div class="searchbox mt10 clearfix">
-                <form action="searchNovel.action" method="post" id="inputForm">
+                <form action="/novel/searchNovel.action" method="post" id="inputForm">
                     <input type="hidden" name="index" value="0" />
                     <input name="kw" type="text" class="t_i" placeholder="搜书搜作者" autocomplete="off"
                     value="请输入作者或小说名" />
@@ -201,7 +201,7 @@ pageContext.setAttribute("path", request.getContextPath());
             <span id="gotop" class="icons icon-gotop">
             </span>
         </div>
-        <script src="script/common.js"></script>
+        <script src="../script/common.js"></script>
         <div class="pop_cover">
         </div>
         <div class="pop_tip">

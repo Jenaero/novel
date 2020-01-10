@@ -4,8 +4,13 @@ server:
 spring:
   profiles:
     active: dao,service
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
 
 #logging:
 #  level: debug
+
 
 
