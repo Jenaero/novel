@@ -1,6 +1,7 @@
 package com.xiaokedou.novel.domain.po;
 
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 
@@ -9,6 +10,7 @@ import java.io.Serializable;
 public class ChapterDetail implements Serializable {
     private static final long serialVersionUID = -7303060644500661569L;
     //主键Id
+    @Field("_id")
     private Long id;
     //小说id
     private Long novelId;

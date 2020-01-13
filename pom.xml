@@ -208,10 +208,10 @@
 				<artifactId>fastdfs-client</artifactId>
 				<version>${fastdfs.client.version}</version>
 			</dependency>
-
+			<!--freemarker 用于网页seo-->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-thymeleaf</artifactId>
+				<artifactId>spring-boot-starter-freemarker</artifactId>
 				<version>${spring.boot.version}</version>
 			</dependency>
 
