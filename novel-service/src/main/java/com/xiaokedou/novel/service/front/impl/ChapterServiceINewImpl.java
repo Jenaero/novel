@@ -30,7 +30,7 @@ import java.util.Optional;
 @Service
 public class ChapterServiceINewImpl implements ChapterService {
     {
-        NovelSpiderUtil.setConfPath("../webapps/Spider-Rule.xml");
+        NovelSpiderUtil.setConfPath("novel-rule/Spider-Rule.xml");
     }
 
     @Resource
