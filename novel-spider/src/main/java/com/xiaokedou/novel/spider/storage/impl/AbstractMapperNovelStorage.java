@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 /**
  * AbstractMapperNovelStorage
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2019/12/11
  */
 public abstract class AbstractMapperNovelStorage implements Processor {

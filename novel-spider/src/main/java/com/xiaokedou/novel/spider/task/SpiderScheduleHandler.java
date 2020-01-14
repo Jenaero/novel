@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * SpiderScheduleHandler
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2020/1/2
  */
 @Component

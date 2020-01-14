@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * NovelDaoApplication
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2019/12/10
  */
 @SpringBootApplication

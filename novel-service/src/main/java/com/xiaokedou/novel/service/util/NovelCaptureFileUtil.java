@@ -14,7 +14,7 @@ import java.io.IOException;
  * NovelCaptureFileUtil
  * 文件抓取并存储
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2019/12/19
  */
 @Deprecated

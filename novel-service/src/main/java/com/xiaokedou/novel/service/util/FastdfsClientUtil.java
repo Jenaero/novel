@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * FastdfsClientUtil
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2019/12/23
  */
 @Component

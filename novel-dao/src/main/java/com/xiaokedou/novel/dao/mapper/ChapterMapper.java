@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * ChapterMapper
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2019/12/19
  */
 public interface ChapterMapper extends BaseMapper <Chapter> {

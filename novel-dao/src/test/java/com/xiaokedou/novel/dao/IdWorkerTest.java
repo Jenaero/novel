@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * IdWorkerTest
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2019/12/24
  */
 @SpringBootTest

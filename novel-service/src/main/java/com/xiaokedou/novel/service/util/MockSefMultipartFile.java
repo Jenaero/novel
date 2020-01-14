@@ -13,7 +13,7 @@ import java.io.InputStream;
 /**
  * MockSefMultipartFile
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2019/12/23
  */
 public class MockSefMultipartFile implements MultipartFile {

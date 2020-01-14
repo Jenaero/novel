@@ -16,7 +16,7 @@ import java.io.IOException;
  * <p>
  * 网络Capture图，缓存到另外服务器
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2019/12/19
  */
 public class TestCapture {

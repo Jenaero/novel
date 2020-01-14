@@ -13,7 +13,7 @@ import java.io.FileInputStream;
 /**
  * TestFastDFS
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2019/12/23
  */
 public class TestFastDFS {

@@ -1,14 +1,17 @@
 package com.xiaokedou.novel.spider.storage.impl;
 
 /**
- * BxwxNovelStorageImpl
+ * MpzwNovelStorageImpl
+ *
+ * http://www.maopuzww.com/
+ * 猫扑中文
  *
  * @Author: renyajian
- * @Date: 2019/12/11
+ * @Date: 2019/01/14
  */
-public class BxwxNovelStorageImpl extends AbstractMapperNovelStorage {
+public class MpzwNovelStorageImpl extends AbstractMapperNovelStorage {
 
-    public BxwxNovelStorageImpl() {
+    public MpzwNovelStorageImpl() {
         tasks.put("0", "https://www.bxwx8.la/binitial1/0/1.htm");
         for (int i = 0; i <= 25; i++) {
             String letter = (char) (i + 'A') + "";

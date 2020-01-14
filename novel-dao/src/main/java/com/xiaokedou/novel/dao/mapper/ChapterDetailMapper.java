@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * ChapterDetailMapper
  * 小说文本信息丢到mongoDB
  *
- * @Auther: renyajian
+ * @Author: renyajian
  * @Date: 2019/12/19
  */
 public interface ChapterDetailMapper extends MongoRepository<ChapterDetail,String> {
