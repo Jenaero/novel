@@ -148,7 +148,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                                     stopWatch.stop();
 //                                    logger.info(stopWatch.prettyPrint());
                                 } catch (IllegalStateException e) {
-                                    logger.error("author=" + novel.getAuthor() + ",name=" + novel.getName() + ",获取失败", e);
+                                    logger.error("author=" + novel.getAuthor() + ",name=<" + novel.getName() + ">,获取失败", e);
                                     e.printStackTrace();
                                 }
                             }
@@ -161,16 +161,16 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                                 int chapterRows = chapterMapper.batchInsert(chapters);
                                 List <ChapterDetail> chapterDetailList = chapterDetailMapper.insert(chapterDetails);
                                 if (novelRows <= 0 || chapterRows <= 0 || CollectionUtils.isEmpty(chapterDetailList)) {
-                                    throw new RuntimeException("author=" + novel.getAuthor() + ",name=" + novel.getName() + ",入库失败");
+                                    throw new RuntimeException("author=" + novel.getAuthor() + ",name=<" + novel.getName() + ">,入库失败");
                                 }
-                                logger.info("成功下载 author=" + novel.getAuthor() + ",name=" + novel.getName());
+                                logger.info("成功下载 author=" + novel.getAuthor() + ",name=<" + novel.getName()+">");
                                 transactionManager.commit(status);
                             } catch (TransactionException e) {
                                 transactionManager.rollback(status);
                                 throw new RuntimeException("Transaction提交事务失败");
                             } catch (Exception e) {
                                 transactionManager.rollback(status);
-                                logger.error("author=" + novel.getAuthor() + ",name=" + novel.getName() + ",入库失败", e);
+                                logger.error("author=" + novel.getAuthor() + ",name=<" + novel.getName() + ">,入库失败", e);
                             }
                         }
                         Thread.sleep(1_000);
