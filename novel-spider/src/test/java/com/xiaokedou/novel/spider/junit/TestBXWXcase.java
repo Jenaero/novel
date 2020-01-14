@@ -16,7 +16,7 @@ import com.xiaokedou.novel.service.util.NovelSpiderFactory;
 import com.xiaokedou.novel.service.util.NovelSpiderHttpGet;
 import com.xiaokedou.novel.service.util.NovelSpiderUtil;
 import com.xiaokedou.novel.spider.storage.Processor;
-import com.xiaokedou.novel.spider.storage.impl.BxwxNovelStorageImpl;
+import com.xiaokedou.novel.spider.storage.impl.BxwxNovelStorageImplDemo;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -207,7 +207,7 @@ public class TestBXWXcase {
 
     @Test
     public void testBxwxProcess() throws FileNotFoundException {
-        Processor processor = new BxwxNovelStorageImpl();
+        Processor processor = new BxwxNovelStorageImplDemo();
         processor.process();
     }
 

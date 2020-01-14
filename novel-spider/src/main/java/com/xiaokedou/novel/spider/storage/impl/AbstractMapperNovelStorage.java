@@ -97,7 +97,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                             }
                             //图片入服务器并返回新地址
                             String finalImg = novel.getImg();
-                            finalImg = fastdfsClientUtil.upload(novel.getImg());
+                            finalImg = fastdfsClientUtil.upload(finalImg);
                             List <Chapter> chapters = Lists.newArrayList();
                             List <ChapterDetail> chapterDetails = Lists.newArrayList();
                             //测试必须要启动redis

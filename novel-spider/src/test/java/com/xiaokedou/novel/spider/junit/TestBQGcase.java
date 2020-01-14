@@ -80,7 +80,7 @@ public class TestBQGcase {
 //	}
 //	@Test
 //	public void testBxwxProcess() throws FileNotFoundException {
-//		Processor processor = new BxwxNovelStorageImpl();
+//		Processor processor = new BxwxNovelStorageImplDemo();
 //		processor.process();
 //	}
 	
