@@ -9,7 +9,7 @@ package com.xiaokedou.novel.spider.storage.impl;
  * @Author: renyajian
  * @Date: 2019/01/14
  */
-public class MpzwNovelStorageImpl extends AbstractMapperNovelStorage {
+public class MpzwNovelStorageImpl extends AbstractAllNovelStorage {
 
     public MpzwNovelStorageImpl() {
         tasks.put("0", "https://www.bxwx8.la/binitial1/0/1.htm");

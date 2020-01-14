@@ -33,14 +33,14 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * AbstractMapperNovelStorage
+ * AbstractAllNovelStorage
  *
  * @Author: renyajian
  * @Date: 2019/12/11
  */
-public abstract class AbstractMapperNovelStorage implements Processor {
+public abstract class AbstractAllNovelStorage implements Processor {
 
-    private final Logger logger = LoggerFactory.getLogger(AbstractMapperNovelStorage.class);
+    private final Logger logger = LoggerFactory.getLogger(AbstractAllNovelStorage.class);
 
 
     protected static Map <String, String> tasks = new TreeMap <>();
@@ -53,7 +53,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
     protected PlatformTransactionManager transactionManager;
     protected FastdfsClientUtil fastdfsClientUtil;
 
-    public AbstractMapperNovelStorage() {
+    public AbstractAllNovelStorage() {
         ApplicationContext context = SpringUtil.getApplicationContext();
         novelMapper = context.getBean(NovelMapper.class);
         chapterMapper = context.getBean(ChapterMapper.class);
@@ -72,7 +72,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                     keepAliveTime,
                     TimeUnit.SECONDS,
                     new LinkedBlockingDeque <>(100000),
-                    new NamedThreadFactory("novel")
+                    new NamedThreadFactory("novel-all")
             );
             List <Future <String>> futures = new ArrayList <>(tasks.size());
             for (Map.Entry <String, String> entry : tasks.entrySet()) {
@@ -82,7 +82,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                     INovelSpider spider = NovelSpiderFactory.getNovelSpider(value);
                     Iterator <List <Novel>> iterator = spider.iterator(value, 10);
                     while (iterator.hasNext()) {
-                        System.err.println(Thread.currentThread().getName() + "开始抓取[" + key + "] 的 URL:" + spider.next());
+                        logger.info(Thread.currentThread().getName() + "开始抓取[" + key + "] 的 URL:" + spider.next());
                         List <Novel> novels = iterator.next();
                         Date now = new Date();
                         for (int i = 0; i < novels.size(); i++) {
