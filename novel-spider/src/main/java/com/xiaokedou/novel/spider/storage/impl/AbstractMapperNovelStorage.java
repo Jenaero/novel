@@ -138,7 +138,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                                     chapterDetail.setNextId(nextId);
                                     chapterDetails.add(chapterDetail);
                                     stopWatch.stop();
-                                    logger.info(stopWatch.prettyPrint());
+//                                    logger.info(stopWatch.prettyPrint());
                                 } catch (IllegalStateException e) {
                                     logger.error("author=" + novel.getAuthor() + ",name=" + novel.getName() + ",获取失败", e);
                                     e.printStackTrace();
