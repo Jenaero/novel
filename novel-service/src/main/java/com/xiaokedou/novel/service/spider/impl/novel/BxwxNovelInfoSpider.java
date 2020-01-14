@@ -11,14 +11,19 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import javax.annotation.Resource;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class BxwxNovelInfoSpider extends AbstractNovelInfoSpider {
 
     @Resource
     private FastdfsClientUtil fastdfsClientUtil;
+    private ExecutorService executorService;
 
     public BxwxNovelInfoSpider() {
         fastdfsClientUtil = SpringUtil.getApplicationContext().getBean(FastdfsClientUtil.class);
+        executorService = Executors.newSingleThreadExecutor();
     }
 
     @Override
@@ -51,7 +56,8 @@ public class BxwxNovelInfoSpider extends AbstractNovelInfoSpider {
             String novelUrl = url;
             String img = doc.select(".picborder").attr("src");
             //图片入服务器并返回新地址
-            img = fastdfsClientUtil.upload(img);
+            String finalImg = img;
+            Future <String> future = executorService.submit(() -> fastdfsClientUtil.upload(finalImg));
             Elements elements = doc.getElementsByTag("table").get(2).getElementsByTag("table");
             Element table = elements.get(6);
             Element firstTr = table.getElementsByTag("tr").first();
@@ -80,6 +86,9 @@ public class BxwxNovelInfoSpider extends AbstractNovelInfoSpider {
             String lastUpdateChapter = elements.get(7).getElementsByTag("a").get(1).text().trim();
             String introduction = elements.get(7).getElementsByTag("div").first().text().replace("wWw.bxwx9.org", "").replace("bxwx9.org", "").trim();
             NovelInfo novelInfo = new NovelInfo();
+            if (future.isDone()){
+                img = future.get();
+            }
             novelInfo.set(name, author, img, Integer.parseInt(collection), Integer.parseInt(length),
                     Integer.parseInt(totalClick),
                     Integer.parseInt(monthClick),

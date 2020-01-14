@@ -13,5 +13,5 @@ import java.util.List;
  */
 public interface ChapterMapper extends BaseMapper <Chapter> {
 
-    void batchInsert(List<Chapter> chapters);
+    int batchInsert(List<Chapter> chapters);
 }

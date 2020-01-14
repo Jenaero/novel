@@ -1,5 +1,6 @@
 package com.xiaokedou.novel.spider.storage.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Lists;
 import com.xiaokedou.novel.dao.mapper.ChapterDetailMapper;
 import com.xiaokedou.novel.dao.mapper.ChapterMapper;
@@ -14,7 +15,15 @@ import com.xiaokedou.novel.service.spider.INovelSpider;
 import com.xiaokedou.novel.service.util.NovelSpiderFactory;
 import com.xiaokedou.novel.service.util.SpringUtil;
 import com.xiaokedou.novel.spider.storage.Processor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionException;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StopWatch;
 
 import java.util.*;
@@ -33,6 +42,9 @@ import java.util.stream.Collectors;
  */
 public abstract class AbstractMapperNovelStorage implements Processor {
 
+    private final Logger logger = LoggerFactory.getLogger(AbstractMapperNovelStorage.class);
+
+
     protected static Map <String, String> tasks = new TreeMap <>();
     protected NovelMapper novelMapper;
     protected ChapterMapper chapterMapper;
@@ -40,6 +52,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
     protected IdWorkerService idWorkerService;
     protected final static Integer keepAliveTime = 120;
     protected ThreadPoolExecutor threadPoolExecutor = null;
+    protected PlatformTransactionManager transactionManager;
 
     public AbstractMapperNovelStorage() {
         ApplicationContext context = SpringUtil.getApplicationContext();
@@ -47,6 +60,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
         chapterMapper = context.getBean(ChapterMapper.class);
         chapterDetailMapper = context.getBean(ChapterDetailMapper.class);
         idWorkerService = context.getBean(IdWorkerService.class);
+        transactionManager = context.getBean(PlatformTransactionManager.class);
     }
 
     @Override
@@ -73,8 +87,17 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                         Date now = new Date();
                         for (int i = 0; i < novels.size(); i++) {
                             Novel novel = novels.get(i);
+                            //重复下载跳过
+                            Integer novelCount = novelMapper.selectCount(new LambdaQueryWrapper <Novel>()
+                                    .eq(Novel::getName, novel.getName())
+                                    .eq(Novel::getAuthor, novel.getAuthor()));
+                            if (novelCount > 0) {
+                                logger.warn("author=" + novel.getAuthor() + ",name=<" + novel.getName() + ">,已存在,跳过下载！");
+                                continue;
+                            }
                             List <Chapter> chapters = Lists.newArrayList();
                             List <ChapterDetail> chapterDetails = Lists.newArrayList();
+                            //测试必须要启动redis
                             novel.setId(idWorkerService.getOrderId(now));
                             novel.setFirstLetter(key.charAt(0) + "");    //设置小说的名字的首字母
                             //todo 拿到小说的所有章节
@@ -89,7 +112,7 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                             for (int j = 0; j < chapters.size(); j++) {
                                 //todo 拿到章节的具体内容及上下章索引
                                 try {
-                                    StopWatch stopWatch = new StopWatch(j + "-"+chapters.size());
+                                    StopWatch stopWatch = new StopWatch(j + "-" + chapters.size());
                                     stopWatch.start("任务1-getChapterDetailSpider");
                                     Chapter chapter = chapters.get(j);
                                     IChapterDetailSpider chapterDetailSpider = NovelSpiderFactory.getChapterDetailSpider(chapter.getUrl());
@@ -115,16 +138,32 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                                     chapterDetail.setNextId(nextId);
                                     chapterDetails.add(chapterDetail);
                                     stopWatch.stop();
-                                    System.out.println(stopWatch.prettyPrint());
+                                    logger.info(stopWatch.prettyPrint());
                                 } catch (IllegalStateException e) {
+                                    logger.error("author=" + novel.getAuthor() + ",name=" + novel.getName() + ",获取失败", e);
                                     e.printStackTrace();
-                                    System.out.println(e);
                                 }
                             }
-                            System.out.println("下载第" + i + "本！");
-                            novelMapper.insert(novel);
-                            chapterMapper.batchInsert(chapters);
-                            chapterDetailMapper.insert(chapterDetails);
+                            //fixme 新增校验 事务一致性
+                            DefaultTransactionDefinition definition = new DefaultTransactionDefinition();
+                            definition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+                            TransactionStatus status = transactionManager.getTransaction(definition);
+                            try {
+                                int novelRows = novelMapper.insert(novel);
+                                int chapterRows = chapterMapper.batchInsert(chapters);
+                                List <ChapterDetail> chapterDetailList = chapterDetailMapper.insert(chapterDetails);
+                                if (novelRows <= 0 || chapterRows <= 0 || CollectionUtils.isEmpty(chapterDetailList)) {
+                                    throw new RuntimeException("author=" + novel.getAuthor() + ",name=" + novel.getName() + ",入库失败");
+                                }
+                                logger.info("成功下载 author=" + novel.getAuthor() + ",name=" + novel.getName());
+                                transactionManager.commit(status);
+                            } catch (TransactionException e) {
+                                transactionManager.rollback(status);
+                                throw new RuntimeException("Transaction提交事务失败");
+                            } catch (Exception e) {
+                                transactionManager.rollback(status);
+                                logger.error("author=" + novel.getAuthor() + ",name=" + novel.getName() + ",入库失败", e);
+                            }
                         }
                         Thread.sleep(1_000);
                     }

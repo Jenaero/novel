@@ -62,7 +62,7 @@ public class FastdfsClientUtil {
 
             StorePath storePath = this.storageClient.uploadImageAndCrtThumbImage(multipartFile.getInputStream(), multipartFile.getSize(), ext, null);
             String path = prefix + baseHost + storePath.getFullPath();
-            System.out.println(path);
+            logger.info(path);
             return path;
         } catch (Exception e) {
             throw new RuntimeException(e);
