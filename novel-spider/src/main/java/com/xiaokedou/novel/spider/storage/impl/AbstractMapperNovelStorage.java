@@ -12,6 +12,7 @@ import com.xiaokedou.novel.service.idworker.IdWorkerService;
 import com.xiaokedou.novel.service.spider.IChapterDetailSpider;
 import com.xiaokedou.novel.service.spider.IChapterSpider;
 import com.xiaokedou.novel.service.spider.INovelSpider;
+import com.xiaokedou.novel.service.util.FastdfsClientUtil;
 import com.xiaokedou.novel.service.util.NovelSpiderFactory;
 import com.xiaokedou.novel.service.util.SpringUtil;
 import com.xiaokedou.novel.spider.storage.Processor;
@@ -27,10 +28,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StopWatch;
 
 import java.util.*;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -53,6 +51,8 @@ public abstract class AbstractMapperNovelStorage implements Processor {
     protected final static Integer keepAliveTime = 120;
     protected ThreadPoolExecutor threadPoolExecutor = null;
     protected PlatformTransactionManager transactionManager;
+    protected FastdfsClientUtil fastdfsClientUtil;
+    protected ExecutorService executorService;
 
     public AbstractMapperNovelStorage() {
         ApplicationContext context = SpringUtil.getApplicationContext();
@@ -61,6 +61,8 @@ public abstract class AbstractMapperNovelStorage implements Processor {
         chapterDetailMapper = context.getBean(ChapterDetailMapper.class);
         idWorkerService = context.getBean(IdWorkerService.class);
         transactionManager = context.getBean(PlatformTransactionManager.class);
+        fastdfsClientUtil = context.getBean(FastdfsClientUtil.class);
+        executorService = Executors.newSingleThreadExecutor();
     }
 
     @Override
@@ -95,11 +97,17 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                                 logger.warn("author=" + novel.getAuthor() + ",name=<" + novel.getName() + ">,已存在,跳过下载！");
                                 continue;
                             }
+                            //图片入服务器并返回新地址
+                            String finalImg = novel.getImg();
+                            Future <String> futureImg = executorService.submit(() -> fastdfsClientUtil.upload(finalImg));
                             List <Chapter> chapters = Lists.newArrayList();
                             List <ChapterDetail> chapterDetails = Lists.newArrayList();
                             //测试必须要启动redis
                             novel.setId(idWorkerService.getOrderId(now));
                             novel.setFirstLetter(key.charAt(0) + "");    //设置小说的名字的首字母
+                            if (futureImg.isDone()){
+                                novel.setImg(futureImg.get());
+                            }
                             //todo 拿到小说的所有章节
                             IChapterSpider chapterSpider = NovelSpiderFactory.getChapterSpider(novel.getChapterUrl());
                             //拼接chapters 列表
