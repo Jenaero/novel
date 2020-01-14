@@ -52,7 +52,6 @@ public abstract class AbstractMapperNovelStorage implements Processor {
     protected ThreadPoolExecutor threadPoolExecutor = null;
     protected PlatformTransactionManager transactionManager;
     protected FastdfsClientUtil fastdfsClientUtil;
-    protected ExecutorService executorService;
 
     public AbstractMapperNovelStorage() {
         ApplicationContext context = SpringUtil.getApplicationContext();
@@ -62,7 +61,6 @@ public abstract class AbstractMapperNovelStorage implements Processor {
         idWorkerService = context.getBean(IdWorkerService.class);
         transactionManager = context.getBean(PlatformTransactionManager.class);
         fastdfsClientUtil = context.getBean(FastdfsClientUtil.class);
-        executorService = Executors.newSingleThreadExecutor();
     }
 
     @Override
@@ -99,15 +97,13 @@ public abstract class AbstractMapperNovelStorage implements Processor {
                             }
                             //图片入服务器并返回新地址
                             String finalImg = novel.getImg();
-                            Future <String> futureImg = executorService.submit(() -> fastdfsClientUtil.upload(finalImg));
+                            finalImg = fastdfsClientUtil.upload(novel.getImg());
                             List <Chapter> chapters = Lists.newArrayList();
                             List <ChapterDetail> chapterDetails = Lists.newArrayList();
                             //测试必须要启动redis
                             novel.setId(idWorkerService.getOrderId(now));
+                            novel.setImg(finalImg);
                             novel.setFirstLetter(key.charAt(0) + "");    //设置小说的名字的首字母
-                            if (futureImg.isDone()){
-                                novel.setImg(futureImg.get());
-                            }
                             //todo 拿到小说的所有章节
                             IChapterSpider chapterSpider = NovelSpiderFactory.getChapterSpider(novel.getChapterUrl());
                             //拼接chapters 列表
