@@ -1,3 +1,10 @@
 spring:
   profiles:
     active: dao,service
+
+dynamic:
+  log:
+    path: /web/logs/novel-spider
+
+log:
+  additivity: false

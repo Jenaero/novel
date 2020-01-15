@@ -15,15 +15,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpiderScheduleHandler {
 
-//    @Scheduled(fixedRate = 100*24*3600000)
+    @Scheduled(fixedRate = 100*24*3600000)
     public void bxwxAll() {
         Processor processor = new BxwxAllNovelStorageImpl();
         processor.process();
     }
 
     //每天凌晨一点执行
-//    @Scheduled(cron = "0 0 1 * * ?")
-    @Scheduled(fixedRate = 100*24*3600000)
+    @Scheduled(cron = "0 0 1 * * ?")
+//    @Scheduled(fixedRate = 100*24*3600000)
     public void bxwxUpdate() {
         Processor processor = new BxwxUpdateNovelStorageImpl();
         processor.process();

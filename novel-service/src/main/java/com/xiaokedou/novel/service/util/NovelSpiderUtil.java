@@ -41,9 +41,6 @@ public final class NovelSpiderUtil {
 		SAXReader reader = new SAXReader();
 		try {
             Document doc = reader.read(new File(confPath));
-//            Document doc = reader.read(new File(confPath));
-//			Document doc = reader.read(new File("D:/code/webdevelop/conf/Spider-Rule.xml"));
-//			Document doc = reader.read(new File("/home/williams/novel/conf/Spider-Rule.xml"));
 			Element root = doc.getRootElement();
 			List<Element> sites = root.elements("site");
 			for (Element site : sites) {

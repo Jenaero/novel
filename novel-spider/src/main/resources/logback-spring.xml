@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="logPath" source="dynamic.log.path"/>
+    <property name="localDateTime" value="%d{yyyy-MM-dd}"/>
+    <property name="logLevel" value="INFO"/>
+    <property name="outPattern" value="[%-5p] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%c] - %m%n"/>
+    <property name="maxHistory" value="7"/>
+    <property name="charSet" value="UTF-8"/>
+
+    <!-- 控制台 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${outPattern}</pattern>
+            <charset>${charSet}</charset>
+        </encoder>
+    </appender>
+    <root level="${logLevel}">
+        <appender-ref ref="console"/>
+    </root>
+
+    <!-- novel-spider-update -->
+    <appender name="novel-spider-update" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logPath}/update.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logPath}/update.log.${localDateTime}</fileNamePattern>
+            <maxHistory>${maxHistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${outPattern}</pattern>
+            <charset>${charSet}</charset>
+        </encoder>
+    </appender>
+    <logger name="com.xiaokedou.novel.spider.storage.impl.AbstractUpdateNovelStorage" level="${logLevel}" additivity="${log.additivity}">
+        <appender-ref ref="novel-spider-update"/>
+    </logger>
+
+    <!-- novel-spider-all -->
+    <appender name="novel-spider-all" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logPath}/all.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logPath}/all.log.${localDateTime}</fileNamePattern>
+            <maxHistory>${maxHistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${outPattern}</pattern>
+            <charset>${charSet}</charset>
+        </encoder>
+    </appender>
+    <logger name="com.xiaokedou.novel.spider.storage.impl.AbstractAllNovelStorage" level="${logLevel}" additivity="${log.additivity}">
+        <appender-ref ref="novel-spider-all"/>
+    </logger>
+</configuration>
