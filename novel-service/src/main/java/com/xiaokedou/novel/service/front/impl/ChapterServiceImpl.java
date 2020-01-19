@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//@Service
+@Service
 public class ChapterServiceImpl implements ChapterService {
     {
         NovelSpiderUtil.setConfPath("../webapps/Spider-Rule.xml");

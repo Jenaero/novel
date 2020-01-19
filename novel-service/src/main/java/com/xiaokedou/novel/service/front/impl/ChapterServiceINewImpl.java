@@ -27,7 +27,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
 public class ChapterServiceINewImpl implements ChapterService {
     {
         NovelSpiderUtil.setConfPath("../webapps/Spider-Rule.xml");
