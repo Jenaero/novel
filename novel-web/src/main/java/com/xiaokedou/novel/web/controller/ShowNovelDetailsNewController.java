@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 //@Controller
-@RequestMapping("/novel/")
+//@RequestMapping("/novel/")
 public class ShowNovelDetailsNewController {
 	
 	@Resource
