@@ -73,6 +73,3 @@ class DemoApplicationTests {
 >* Spring Boot提供了一个@SpringBootTest注释，spring-test @ContextConfiguration当您需要Spring Boot功能时，它可以用作标准注释的替代。注释通过创建ApplicationContext在测试中使用过的来SpringApplication起作用。除了@SpringBootTest提供许多其他注释外，还用于测试应用程序的更多特定部分。
 >如果使用的是JUnit 4，请不要忘记也将其添加@RunWith(SpringRunner.class)到测试中，否则注释将被忽略。如果您使用的是JUnit 5，则无需添加等价项@ExtendWith(SpringExtension.class)，@SpringBootTest并且其他@…Test注释已经在其中进行了注释。
 
-
-
-·
