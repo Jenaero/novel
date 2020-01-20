@@ -197,7 +197,7 @@ public abstract class AbstractUpdateNovelStorage implements Processor {
                                     chapterDetail.setNextId(nextId);
                                     needUpdateChapterDetails.add(chapterDetail);
                                     stopWatch.stop();
-                                    logger.info(stopWatch.prettyPrint());
+//                                    logger.info(stopWatch.prettyPrint());
                                 } catch (IllegalStateException e) {
                                     logger.error("author=" + newNovel.getAuthor() + ",name=<" + newNovel.getName() + ">,获取更新章节失败", e);
                                     e.printStackTrace();
