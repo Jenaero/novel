@@ -72,7 +72,7 @@ public class BxwxNovelInfoSpider extends AbstractNovelInfoSpider {
             String weekRecommend = tr5.getElementsByTag("td").get(5).text();
 
             String lastUpdateChapter = elements.get(7).getElementsByTag("a").get(1).text().trim();
-            String introduction = elements.get(7).getElementsByTag("div").first().text().replace("wWw.bxwx9.org", "").replace("bxwx9.org", "").trim();
+            String introduction = elements.get(7).getElementsByTag("div").first().text().replace("wWw.bxwx8.la", "").replace("bxwx8.la", "").trim();
             NovelInfo novelInfo = new NovelInfo();
             novelInfo.set(name, author, img, Integer.parseInt(collection), Integer.parseInt(length),
                     Integer.parseInt(totalClick),

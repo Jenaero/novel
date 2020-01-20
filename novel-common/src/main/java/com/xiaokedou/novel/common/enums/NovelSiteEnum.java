@@ -10,7 +10,8 @@ public enum NovelSiteEnum {
 //	BiQuGe(2, "www.xs.la"),
 //	KanShuZhong(3, "kanshuzhong.com"),
     Bxwx(1, "bxwxorg.com"),
-    Bxwx2(2, "bxwx8.la");
+    Bxwx2(2, "bxwx8.la"),
+    Mpzw(3,"maopuzww.com");
     private int id;
     private String url;
 
