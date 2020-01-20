@@ -1,37 +1,37 @@
 package com.xiaokedou.novel.web.controller;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
 import com.xiaokedou.novel.common.base.Pager;
 import com.xiaokedou.novel.domain.po.Novel;
 import com.xiaokedou.novel.domain.vo.EncryptedNovel;
 import com.xiaokedou.novel.service.front.NovelService;
-
-
 import com.xiaokedou.novel.service.util.EncryptUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-//@Controller
-//@RequestMapping("/novel/")
-public class ShowNovelsController {
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+import java.util.List;
+
+@Controller
+public class ShowNovelsNewController {
 	@Resource
 	private NovelService novelService;
 	
-	@RequestMapping(value = "searchNovel.action",method = RequestMethod.POST)
-	public  String searchNovel(HttpServletRequest request,String kw,int index){
+	@RequestMapping(value = "/",method = RequestMethod.GET)
+	public  String index(Model model){
 		Pager pager = new Pager();
-		pager.setOffset(index*30);
-		pager.setPageSize(20000);
-		List<Novel> novels=novelService.searchNovelByNameAuthor(kw,pager);
-		List<EncryptedNovel> encryptNovels = EncryptUtils.encryptNovels(novels);
-		request.setAttribute("encryptNovels", encryptNovels);
-		return "search";
+		pager.setPageSize(6);
+		//top
+		List<Novel> novels=novelService.searchNovelByNameAuthor(null,pager);
+		//玄幻、修真、都市、穿越、网游、科幻
+        List <String> types = Arrays.asList("玄幻", "修真", "都市", "穿越", "网游", "科幻");
+//        novelService.searchNovelByTypes(,pager);
+        model.addAttribute("items",novels);
+		return "index";
 	}
 	
 

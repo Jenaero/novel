@@ -4,13 +4,8 @@ server:
 spring:
   profiles:
     active: dao,service
-  mvc:
-    view:
-      prefix: /
-      suffix: .jsp
+  thymeleaf:
+    cache: false
 
 #logging:
 #  level: debug
-
-
-

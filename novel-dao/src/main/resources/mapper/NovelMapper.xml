@@ -35,7 +35,12 @@
   </sql>
   
   <select id="selectPageNovelsByKeyWord" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
-    select * from novel where name like  '%${t}%' or author like '%${t}%' 
+    select * from novel
+      <where>
+        <if test="t != null and t != '' ">
+          name like  '%${t}%' or author like '%${t}%'
+        </if>
+      </where>
     limit #{pager.offset},#{pager.pageSize}
   </select>
   <select id="selectByNovelUrl" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Pager" >

@@ -1,0 +1,1 @@
+document.writeln("<center><script type=\'text/javascript\' src=\'#\' charset=\'GBK\'></script></center>");

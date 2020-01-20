@@ -87,7 +87,7 @@ public class NovelServiceImpl implements NovelService {
     /**
      * 奇怪
      */
-    @RedisAnontation(clazz = Novel.class, serialType = RedisAnontation.SerialType.LIST)
+//    @RedisAnontation(clazz = Novel.class, serialType = RedisAnontation.SerialType.LIST)
     @Override
     public List <Novel> searchNovelByNameAuthor(String kw, Pager pager) {
         Page <String> page = new Page <String>();
