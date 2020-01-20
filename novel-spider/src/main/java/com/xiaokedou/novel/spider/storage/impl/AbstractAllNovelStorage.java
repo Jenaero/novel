@@ -153,7 +153,7 @@ public abstract class AbstractAllNovelStorage implements Processor {
                             definition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
                             TransactionStatus status = transactionManager.getTransaction(definition);
                             try {
-                                Integer novelCount = novelMapper.selectCount(new LambdaQueryWrapper <Novel>()
+                                novelCount = novelMapper.selectCount(new LambdaQueryWrapper <Novel>()
                                         .eq(Novel::getName, novel.getName())
                                         .eq(Novel::getAuthor, novel.getAuthor()));
                                 if (novelCount > 0) {
