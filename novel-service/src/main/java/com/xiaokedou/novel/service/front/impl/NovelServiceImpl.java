@@ -96,5 +96,14 @@ public class NovelServiceImpl implements NovelService {
         return novelDao.selectPageNovelsByKeyWord(page);
     }
 
+//    @RedisAnontation(clazz = Novel.class, serialType = RedisAnontation.SerialType.LIST)
+    @Override
+    public List <Novel> searchNovelByTypes(List <String> types, Pager pager) {
+        Page <String> page = new Page <String>();
+        page.setList(types);
+        page.setPager(pager);
+        return novelDao.selectPageNovelsByTypes(page);
+    }
+
 
 }

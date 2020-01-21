@@ -42,7 +42,7 @@
               <div class="l">
                 <div class="item" th:each="item : ${items}">
                   <div class="image">
-                    <a href="#">
+                    <a th:href="${item.novelUrl}">
                       <img th:src="${item.img}" th:alt="${item.name}" width="120" height="150" /></a>
                   </div>
                   <dl>
@@ -63,36 +63,43 @@
             
             <div class="novelslist">
               <div class="content">
-                <h2>玄幻小说</h2>
+                <!--<h2>玄幻小说</h2>-->
+                <h2>武侠修真</h2>
                 <div class="top">
                   <div class="image">
-                    <img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
+                    <img th:src="${hotsMap.get('玄幻魔法').get(0).img}" th:alt="${hotsMap.get('玄幻魔法').get(0).name}" width="67" height="82" /></div>
                   <dl>
                     <dt>
-                      <a href="#">真武世界</a>
+                      <a th:href="${hotsMap.get('玄幻魔法').get(0).novelUrl}" th:text="${hotsMap.get('玄幻魔法').get(0).name}">真武世界</a>
                     </dt>
-                    <dd>在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
+                    <dd th:text="${hotsMap.get('玄幻魔法').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
                     </dd>
                   </dl>
                   <div class="clear"></div>
                 </div>
-                <ul>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
+                <ul th:each="item : ${hotsMap.get('玄幻魔法')}" th:if="${itemStat.index}>0">
+                  <a href="#" th:text="${item.name}">name</a>
+                    <!--<a th:href="${item.novelUrl}" th:text="${item.author}">我是至尊</a>-->
+
+                    <!--/风凌天下-->
+
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
                 </ul>
               </div>
               <div class="content">
-                <h2>修真小说</h2>
+                <!--<h2>修真小说</h2>-->
+                <h2>游戏竞技</h2>
                 <div class="top">
                   <div class="image"><img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
                   <dl>
@@ -119,7 +126,8 @@
                   <li><a href="#">我是至尊</a>/风凌天下</li></ul>
               </div>
               <div class="content border">
-                <h2>都市小说</h2>
+                <!--<h2>都市小说</h2>-->
+                <h2>玄幻魔法</h2>
                 <div class="top">
                   <div class="image">
                     <img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
@@ -150,7 +158,8 @@
             </div>
             <div class="novelslist">
               <div class="content">
-                <h2>穿越小说</h2>
+                <!--<h2>穿越小说</h2>-->
+                <h2>现代都市</h2>
                 <div class="top">
                   <div class="image"><img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
                   <dl>
@@ -177,7 +186,8 @@
                 </ul>
               </div>
               <div class="content">
-                <h2>网游小说</h2>
+                <!--<h2>网游小说</h2>-->
+                <h2>科幻灵异</h2>
                 <div class="top">
                   <div class="image"><img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
                   <dl>
@@ -203,7 +213,8 @@
                   <li><a href="#">我是至尊</a>/风凌天下</li></ul>
               </div>
               <div class="content border">
-                <h2>科幻小说</h2>
+                <!--<h2>科幻小说</h2>-->
+                <h2>言情小说</h2>
                 <div class="top">
                   <div class="image"><img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
                   <dl>

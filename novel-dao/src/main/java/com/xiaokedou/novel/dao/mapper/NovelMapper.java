@@ -39,4 +39,6 @@ public interface NovelMapper extends BaseMapper <Novel> {
     Novel selectByNovelUrl(String url);
 
     List <Novel> selectPageNovelsByKeyWord(Page <String> page);
+
+    List<Novel> selectPageNovelsByTypes(Page<String> page);
 }

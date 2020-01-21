@@ -15,22 +15,28 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Controller
 public class ShowNovelsNewController {
 	@Resource
 	private NovelService novelService;
-	
+
 	@RequestMapping(value = "/",method = RequestMethod.GET)
 	public  String index(Model model){
-		Pager pager = new Pager();
-		pager.setPageSize(6);
 		//top
-		List<Novel> novels=novelService.searchNovelByNameAuthor(null,pager);
+		List<Novel> items=novelService.searchNovelByNameAuthor(null,new Pager(6));
 		//玄幻、修真、都市、穿越、网游、科幻
-        List <String> types = Arrays.asList("玄幻", "修真", "都市", "穿越", "网游", "科幻");
-//        novelService.searchNovelByTypes(,pager);
-        model.addAttribute("items",novels);
+		//其他类型,历史军事,同人小说,武侠修真,游戏竞技,玄幻魔法,现代都市,科幻灵异,耽美小说,言情小说
+		//武侠修真,游戏竞技,玄幻魔法,现代都市,科幻灵异,言情小说
+        List <String> types = Arrays.asList("武侠修真","游戏竞技","玄幻魔法","现代都市","科幻灵异","言情小说");
+		List <Novel> hots = novelService.searchNovelByTypes(types, new Pager(13));
+		Map <String, List <Novel>> hotsMap = hots.stream().collect(Collectors.groupingBy(Novel::getType));
+		model.addAttribute("items",items);
+		model.addAttribute("hotsMap",hotsMap);
 		return "index";
 	}
 	

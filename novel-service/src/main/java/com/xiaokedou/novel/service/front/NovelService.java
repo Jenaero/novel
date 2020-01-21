@@ -31,4 +31,6 @@ public interface NovelService {
     public ChapterContent ChapterContent(String key);
 
     public List <Novel> searchNovelByNameAuthor(String kw, Pager pager);
+
+    public List <Novel> searchNovelByTypes(List <String> types, Pager pager);
 }

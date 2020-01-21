@@ -8,6 +8,13 @@ public class Pager {
     private int pageNum;
     private int offset = 0;
 
+    public Pager() {
+    }
+
+    public Pager(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
     public int getPageSize() {
         return pageSize;
     }

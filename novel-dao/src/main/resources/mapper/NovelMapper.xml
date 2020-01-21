@@ -43,6 +43,15 @@
       </where>
     limit #{pager.offset},#{pager.pageSize}
   </select>
+
+  <select id="selectPageNovelsByTypes" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+      <if test="list != null and list.size() > 0 ">
+        <foreach collection="list" index="index" item="item" separator="union all">
+          (select * from novel where type like '%${item}%' limit #{pager.offset},#{pager.pageSize})
+        </foreach>
+      </if>
+  </select>
+
   <select id="selectByNovelUrl" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Pager" >
     select * from novel where novel_url=#{url}
   </select>
