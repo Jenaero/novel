@@ -165,14 +165,13 @@ public abstract class AbstractUpdateNovelStorage implements Processor {
                             List <Long> needUpdateChapterIds = idWorkerService.getOrderIds(now, needUpdateChapters.size());
                             Map <String, Chapter> chapterGrpByUrl = needUpdateChapters.stream().collect(Collectors.toMap(Chapter::getUrl, Function.identity()));
                             for (int j = 0; j < needUpdateChapters.size(); j++) {
-                                needUpdateChapters.get(j).setId(needUpdateChapterIds.get(j));
-                            }
-                            for (int j = 0; j < needUpdateChapters.size(); j++) {
                                 //拿到章节的具体内容及上下章索引
                                 try {
                                     StopWatch stopWatch = new StopWatch(j + "-" + needUpdateChapters.size());
                                     stopWatch.start("任务1-getChapterDetailSpider");
                                     Chapter needUpdateChapter = needUpdateChapters.get(j);
+                                    needUpdateChapter.setId(needUpdateChapterIds.get(j));
+                                    needUpdateChapter.setNovelId(oldNovel.getId());
                                     String needUpdateChapterUrl = needUpdateChapter.getUrl();
                                     IChapterDetailSpider chapterDetailSpider = NovelSpiderFactory.getChapterDetailSpider(needUpdateChapterUrl);
                                     stopWatch.stop();
