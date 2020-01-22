@@ -41,4 +41,6 @@ public interface NovelMapper extends BaseMapper <Novel> {
     List <Novel> selectPageNovelsByKeyWord(Page <String> page);
 
     List<Novel> selectPageNovelsByTypes(Page<String> page);
+
+    List<Novel> selectPageNovelsByLastUpdateTime(Page<String> page);
 }

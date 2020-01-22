@@ -10,7 +10,7 @@
     <script type="text/javascript" src="./common/jquery.min.js"></script>
     <script type="text/javascript" src="./common/app.js"></script>
   </head>
-  
+
   <body>
     <div id="wrapper">
       <!--Logo+搜索（公共部分）-->
@@ -21,7 +21,7 @@
         <script>bqg_panel();</script>
       </div>
       <!--Logo+搜索（公共部分）-->
-      
+
       <!--主导航条（公共部分）-->
       <div class="nav">
         <ul>
@@ -34,7 +34,7 @@
         </ul>
       </div>
       <!--主导航条（公共部分）-->
-      
+
       <div id="main">
         <div id="content">
           <div id="main">
@@ -55,104 +55,78 @@
                   <div class="clear"></div>
                 </div>
               </div>
- 
+
               <div class="clear"></div>
             </div>
-            
+
             <div class="dahengfu"><script type="text/javascript">ad01();</script></div>
-            
+
             <div class="novelslist">
               <div class="content">
                 <!--<h2>玄幻小说</h2>-->
                 <h2>武侠修真</h2>
                 <div class="top">
                   <div class="image">
-                    <img th:src="${hotsMap.get('玄幻魔法').get(0).img}" th:alt="${hotsMap.get('玄幻魔法').get(0).name}" width="67" height="82" /></div>
+                    <img th:src="${hotsMap.get('武侠修真').get(0).img}" th:alt="${hotsMap.get('武侠修真').get(0).name}" width="67" height="82" />
+                  </div>
                   <dl>
                     <dt>
-                      <a th:href="${hotsMap.get('玄幻魔法').get(0).novelUrl}" th:text="${hotsMap.get('玄幻魔法').get(0).name}">真武世界</a>
+                      <a th:href="${hotsMap.get('武侠修真').get(0).novelUrl}" th:text="${hotsMap.get('武侠修真').get(0).name}">真武世界</a>
                     </dt>
-                    <dd th:text="${hotsMap.get('玄幻魔法').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
+                    <dd th:text="${hotsMap.get('武侠修真').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
                     </dd>
                   </dl>
                   <div class="clear"></div>
                 </div>
-                <ul th:each="item : ${hotsMap.get('玄幻魔法')}" th:if="${itemStat.index}>0">
-                  <a href="#" th:text="${item.name}">name</a>
-                    <!--<a th:href="${item.novelUrl}" th:text="${item.author}">我是至尊</a>-->
-
-                    <!--/风凌天下-->
-
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
-                  <!--<li><a href="#">我是至尊</a>/风凌天下</li>-->
+                <ul >
+                  <li th:each="item : ${hotsMap.get('武侠修真')}" th:if="${itemStat.index}>0" th:inline="text">
+                    <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                  </li>
                 </ul>
               </div>
               <div class="content">
                 <!--<h2>修真小说</h2>-->
                 <h2>游戏竞技</h2>
                 <div class="top">
-                  <div class="image"><img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
+                  <div class="image">
+                    <img th:src="${hotsMap.get('游戏竞技').get(0).img}" th:alt="${hotsMap.get('游戏竞技').get(0).name}" width="67" height="82" />
+                  </div>
                   <dl>
                     <dt>
-                      <a href="#">真武世界</a>
+                      <a th:href="${hotsMap.get('游戏竞技').get(0).novelUrl}" th:text="${hotsMap.get('游戏竞技').get(0).name}">真武世界</a>
                     </dt>
-                    <dd>在这个世界，有狐仙、河神、水怪、大妖，也有求长生的修行者。 修行者们， 开法眼，可看妖魔鬼怪。 炼一口飞剑，可千里杀敌。 千里眼、顺风耳，更可探查四方。 …… 秦府二公子‘秦云’，便是一位修行者……...
+                    <dd th:text="${hotsMap.get('游戏竞技').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
                     </dd>
                   </dl>
                   <div class="clear"></div>
                 </div>
-                <ul>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li></ul>
+                <ul >
+                  <li th:each="item : ${hotsMap.get('游戏竞技')}" th:if="${itemStat.index}>0" th:inline="text">
+                    <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                  </li>
+                </ul>
               </div>
               <div class="content border">
                 <!--<h2>都市小说</h2>-->
                 <h2>玄幻魔法</h2>
                 <div class="top">
                   <div class="image">
-                    <img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
+                    <img th:src="${hotsMap.get('玄幻魔法').get(0).img}" th:alt="${hotsMap.get('玄幻魔法').get(0).name}" width="67" height="82" />
+                  </div>
                   <dl>
                     <dt>
-                      <a href="#">真武世界</a>
+                        <a th:href="${hotsMap.get('玄幻魔法').get(0).novelUrl}" th:text="${hotsMap.get('玄幻魔法').get(0).name}">真武世界</a>
                     </dt>
-                    <dd>某天，宋书航意外加入了一个仙侠中二病资深患者的交流群，里面的群友们都以‘道友’相称，群名片都是各种府主、洞主、真人、天师。连群主走失的宠物犬都称为大妖犬离家出走。整天聊的是炼丹、闯秘境、炼功经验啥的。突然有一天，潜水良久的他突然发现……群里每一个群......</dd>
+                    <dd th:text="${hotsMap.get('玄幻魔法').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
+                    </dd>
                   </dl>
                   <div class="clear"></div>
                 </div>
-                <ul>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                </ul>
+                  <ul >
+                      <li th:each="item : ${hotsMap.get('玄幻魔法')}" th:if="${itemStat.index}>0" th:inline="text">
+                          <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                      </li>
+                  </ul>
               </div>
               <div class="clear"></div>
             </div>
@@ -161,83 +135,67 @@
                 <!--<h2>穿越小说</h2>-->
                 <h2>现代都市</h2>
                 <div class="top">
-                  <div class="image"><img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
-                  <dl>
-                    <dt>
-                      <a href="#">真武世界</a>
-                    </dt>
-                    <dd>一个受够了勾心斗角、生死打拼的金融界巨头回到了古代，进入一商贾之家最没地位的赘婿身体后的休闲故事。家国天下事，本已不欲去碰的他，却又如何能避得过了。“有人曾站在金字塔高点最廉价数不清妒忌与羡艳走过了这段万人簇拥路逃不过墓碑下那孤独的长眠”——final......</dd>
-                  </dl>
-                  <div class="clear"></div>
+                  <div class="image">
+                      <img th:src="${hotsMap.get('现代都市').get(0).img}" th:alt="${hotsMap.get('现代都市').get(0).name}" width="67" height="82" />
+                  </div>
+                    <dl>
+                        <dt>
+                            <a th:href="${hotsMap.get('现代都市').get(0).novelUrl}" th:text="${hotsMap.get('现代都市').get(0).name}">真武世界</a>
+                        </dt>
+                        <dd th:text="${hotsMap.get('现代都市').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
+                        </dd>
+                    </dl>
+                    <div class="clear"></div>
                 </div>
-                <ul>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                </ul>
+                  <ul >
+                      <li th:each="item : ${hotsMap.get('现代都市')}" th:if="${itemStat.index}>0" th:inline="text">
+                          <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                      </li>
+                  </ul>
               </div>
               <div class="content">
                 <!--<h2>网游小说</h2>-->
                 <h2>科幻灵异</h2>
                 <div class="top">
-                  <div class="image"><img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
-                  <dl>
-                    <dt>
-                      <a href="#">真武世界</a>
-                    </dt>
-                    <dd>今年18岁的高中生林枫同学其实很严肃地思考过一个问题：　　当年在英雄联盟第一个职业赛季的赛场上被他吊打过的菜比们，现在好像都已经成为了职业圈中的顶尖大神、　　而他自己时隔四年重新回归，做的第一件事情……　　居然是帮同居的女主播坐镇直播间镇场子！...</dd>
+                  <div class="image">
+                      <img th:src="${hotsMap.get('科幻灵异').get(0).img}" th:alt="${hotsMap.get('科幻灵异').get(0).name}" width="67" height="82" />
+                  </div>
+                    <dl>
+                        <dt>
+                            <a th:href="${hotsMap.get('科幻灵异').get(0).novelUrl}" th:text="${hotsMap.get('科幻灵异').get(0).name}">真武世界</a>
+                        </dt>
+                        <dd th:text="${hotsMap.get('科幻灵异').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
+                        </dd>
                     </dl>
-                  <div class="clear"></div>
+                    <div class="clear"></div>
                 </div>
-                <ul>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li></ul>
+                  <ul >
+                      <li th:each="item : ${hotsMap.get('科幻灵异')}" th:if="${itemStat.index}>0" th:inline="text">
+                          <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                      </li>
+                  </ul>
               </div>
               <div class="content border">
                 <!--<h2>科幻小说</h2>-->
                 <h2>言情小说</h2>
                 <div class="top">
-                  <div class="image"><img src="./common/cover.jpg" alt="真武世界" width="67" height="82" /></div>
-                  <dl>
-                    <dt>
-                      <a href="#">真武世界</a>
-                    </dt>
-                    <dd>灾难爆发，世界末日。 躲在冷冻仓中三百年，再出现，世界已然翻新。 “虽然我是个普通人，但，我希望世界遵从我的意志而改变。”——杜迪安。 …… …… 继《重启末世》后第四本末世小说。 PS：请勿在大人陪同下观看。...</dd>
-                  </dl>
-                  <div class="clear"></div>
+                  <div class="image">
+                      <img th:src="${hotsMap.get('言情小说').get(0).img}" th:alt="${hotsMap.get('言情小说').get(0).name}" width="67" height="82" />
+                  </div>
+                    <dl>
+                        <dt>
+                            <a th:href="${hotsMap.get('言情小说').get(0).novelUrl}" th:text="${hotsMap.get('言情小说').get(0).name}">真武世界</a>
+                        </dt>
+                        <dd th:text="${hotsMap.get('言情小说').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
+                        </dd>
+                    </dl>
+                    <div class="clear"></div>
                 </div>
-                <ul>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li>
-                  <li><a href="#">我是至尊</a>/风凌天下</li></ul>
+                  <ul >
+                      <li th:each="item : ${hotsMap.get('科幻灵异')}" th:if="${itemStat.index}>0" th:inline="text">
+                          <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                      </li>
+                  </ul>
               </div>
               <div class="clear"></div>
             </div>
@@ -556,17 +514,17 @@
             </div>
           </div>
         </div>
-        
+
         <div id="firendlink">友情连接：
           <a href="#">xxx小说</a>
         </div>
       </div>
     </div>
-    
+
 		<!--底部公共广告 begin-->
     <div class="dahengfu"><script type="text/javascript">ad02();</script></div>
 		<!--底部公共广告 end-->
-    
+
     <!--版权信息（公共部分）-->
     <div class="footer">
       <div class="footer_link"></div>

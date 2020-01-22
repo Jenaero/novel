@@ -105,5 +105,12 @@ public class NovelServiceImpl implements NovelService {
         return novelDao.selectPageNovelsByTypes(page);
     }
 
+    @Override
+    public List <Novel> getLastUpdate(Pager pager) {
+        Page <String> page = new Page <String>();
+        page.setPager(pager);
+        return novelDao.selectPageNovelsByLastUpdateTime(page);
+    }
+
 
 }

@@ -33,4 +33,6 @@ public interface NovelService {
     public List <Novel> searchNovelByNameAuthor(String kw, Pager pager);
 
     public List <Novel> searchNovelByTypes(List <String> types, Pager pager);
+
+    public List<Novel> getLastUpdate(Pager pager);
 }

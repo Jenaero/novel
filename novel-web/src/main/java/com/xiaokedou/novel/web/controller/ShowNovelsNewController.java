@@ -35,6 +35,9 @@ public class ShowNovelsNewController {
         List <String> types = Arrays.asList("武侠修真","游戏竞技","玄幻魔法","现代都市","科幻灵异","言情小说");
 		List <Novel> hots = novelService.searchNovelByTypes(types, new Pager(13));
 		Map <String, List <Novel>> hotsMap = hots.stream().collect(Collectors.groupingBy(Novel::getType));
+		//最近更新小说 30
+		//fixme sql 写的有问题，后续先排查sql
+		List <Novel> lastUpdates = novelService.getLastUpdate(new Pager(30));
 		model.addAttribute("items",items);
 		model.addAttribute("hotsMap",hotsMap);
 		return "index";

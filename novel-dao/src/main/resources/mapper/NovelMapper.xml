@@ -44,6 +44,16 @@
     limit #{pager.offset},#{pager.pageSize}
   </select>
 
+  <select id="selectPageNovelsByLastUpdateTime" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+    select * from novel
+    <where>
+      <if test="t != null and t != '' ">
+        last_update_time > #{t}
+      </if>
+    </where>
+    limit #{pager.offset},#{pager.pageSize}
+  </select>
+
   <select id="selectPageNovelsByTypes" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
       <if test="list != null and list.size() > 0 ">
         <foreach collection="list" index="index" item="item" separator="union all">
