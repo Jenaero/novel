@@ -65,8 +65,9 @@ public class FastdfsClientUtil {
             logger.info(path);
             return path;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return null;
     }
 
     /**

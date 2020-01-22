@@ -16,8 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpiderScheduleHandler {
 
-//        @Scheduled(fixedRate =24*3600000)
-    @Scheduled(cron = "0 0 0 22 * ?")
+    @Scheduled(fixedRate = 100 * 24 * 3600000)
     public void bxwxAll() {
         Processor processor = new BxwxAllNovelStorageImpl();
         processor.process();
