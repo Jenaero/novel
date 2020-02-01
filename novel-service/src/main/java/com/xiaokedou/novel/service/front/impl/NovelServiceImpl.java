@@ -106,11 +106,16 @@ public class NovelServiceImpl implements NovelService {
     }
 
     @Override
-    public List <Novel> getLastUpdate(Pager pager) {
+    public List <Novel> getPageOrderByLastUpdateTime(Pager pager) {
         Page <String> page = new Page <String>();
         page.setPager(pager);
-        return novelDao.selectPageNovelsByLastUpdateTime(page);
+        return novelDao.selectPageOrderByLastUpdateTime(page);
     }
 
-
+    @Override
+    public List <Novel> getPageOrderByAddTime(Pager pager) {
+        Page <String> page = new Page <String>();
+        page.setPager(pager);
+        return novelDao.selectPageOrderByAddTime(page);
+    }
 }

@@ -34,5 +34,7 @@ public interface NovelService {
 
     public List <Novel> searchNovelByTypes(List <String> types, Pager pager);
 
-    public List<Novel> getLastUpdate(Pager pager);
+    public List<Novel> getPageOrderByLastUpdateTime(Pager pager);
+
+    public List<Novel> getPageOrderByAddTime(Pager pager);
 }

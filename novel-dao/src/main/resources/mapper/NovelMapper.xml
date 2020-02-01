@@ -44,13 +44,15 @@
     limit #{pager.offset},#{pager.pageSize}
   </select>
 
-  <select id="selectPageNovelsByLastUpdateTime" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+  <select id="selectPageOrderByLastUpdateTime" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
     select * from novel
-    <where>
-      <if test="t != null and t != '' ">
-        last_update_time > #{t}
-      </if>
-    </where>
+    order by last_update_time desc
+    limit #{pager.offset},#{pager.pageSize}
+  </select>
+
+  <select id="selectPageOrderByAddTime" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+    select * from novel
+    order by add_time desc
     limit #{pager.offset},#{pager.pageSize}
   </select>
 

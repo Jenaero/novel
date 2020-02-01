@@ -25,8 +25,8 @@ public class ShowNovelsNewController {
 	@Resource
 	private NovelService novelService;
 
-	@RequestMapping(value = "/",method = RequestMethod.GET)
-	public  String index(Model model){
+	@RequestMapping(value = {"/","/index"},method = RequestMethod.GET)
+	public String index(Model model){
 		//top
 		List<Novel> items=novelService.searchNovelByNameAuthor(null,new Pager(6));
 		//玄幻、修真、都市、穿越、网游、科幻
@@ -36,11 +36,34 @@ public class ShowNovelsNewController {
 		List <Novel> hots = novelService.searchNovelByTypes(types, new Pager(13));
 		Map <String, List <Novel>> hotsMap = hots.stream().collect(Collectors.groupingBy(Novel::getType));
 		//最近更新小说 30
-		//fixme sql 写的有问题，后续先排查sql
-		List <Novel> lastUpdates = novelService.getLastUpdate(new Pager(30));
+		List <Novel> lastUpdates = novelService.getPageOrderByLastUpdateTime(new Pager(30));
+		List <Novel> lastAdds = novelService.getPageOrderByAddTime(new Pager(30));
+		//最新入库小说 30
 		model.addAttribute("items",items);
 		model.addAttribute("hotsMap",hotsMap);
+		model.addAttribute("lastUpdates",lastUpdates);
+		model.addAttribute("lastAdds",lastAdds);
+
 		return "index";
+	}
+
+	@RequestMapping(value = "/channel",method = RequestMethod.GET)
+	public String autoIndex(Model model){
+		//top
+		List<Novel> items=novelService.searchNovelByNameAuthor(null,new Pager(6));
+		//玄幻、修真、都市、穿越、网游、科幻
+		//其他类型,历史军事,同人小说,武侠修真,游戏竞技,玄幻魔法,现代都市,科幻灵异,耽美小说,言情小说
+		//武侠修真,游戏竞技,玄幻魔法,现代都市,科幻灵异,言情小说
+		List <String> types = Arrays.asList("武侠修真","游戏竞技","玄幻魔法","现代都市","科幻灵异","言情小说");
+		//玄幻最近更新小说 30
+		List <Novel> lastUpdates = novelService.getPageByTypeOrderByLastUpdateTime(new Pager(30));
+		List <Novel> lastAdds = novelService.getPageByTypeOrderByLastUpdateTime(new Pager(30));
+		//玄幻最新入库小说 30
+		model.addAttribute("items",items);
+		model.addAttribute("lastUpdates",lastUpdates);
+		model.addAttribute("lastAdds",lastAdds);
+
+		return "channel";
 	}
 	
 
