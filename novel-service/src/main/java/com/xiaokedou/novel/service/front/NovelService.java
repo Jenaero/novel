@@ -1,6 +1,7 @@
 package com.xiaokedou.novel.service.front;
 
 import com.xiaokedou.novel.common.base.Pager;
+import com.xiaokedou.novel.common.enums.NovelTypeEnum;
 import com.xiaokedou.novel.domain.po.Novel;
 import com.xiaokedou.novel.domain.vo.ChapterContent;
 import com.xiaokedou.novel.domain.vo.EncryptedNovel;
@@ -34,7 +35,9 @@ public interface NovelService {
 
     public List <Novel> searchNovelByTypes(List <String> types, Pager pager);
 
-    public List<Novel> getPageOrderByLastUpdateTime(Pager pager);
+    public List<Novel> getPageByTypeOrderByLastUpdateTime(Pager pager, NovelTypeEnum typeEnum);
 
-    public List<Novel> getPageOrderByAddTime(Pager pager);
+    public List<Novel> getPageByTypeOrderByAddTime(Pager pager,NovelTypeEnum typeEnum);
+
+    public List<Novel> getPageByTypeOrderByTotalClick(Pager pager, NovelTypeEnum f);
 }

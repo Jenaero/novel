@@ -1,9 +1,11 @@
 package com.xiaokedou.novel.common.enums;
 
 /**
- * 已经被支持的小说网站枚举
+ * NovelStatusEnum
+ * 已经被支持的小说网站
  *
- * @author chengxuguodu
+ * @Author: renyajian
+ * @Date: 2020/12/25
  */
 public enum NovelSiteEnum {
     //	DingDianXiaoShuo(1, "23wx.com"),

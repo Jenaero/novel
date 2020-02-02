@@ -3,6 +3,7 @@ package com.xiaokedou.novel.service.front.impl;
 import com.xiaokedou.novel.common.annotation.RedisAnontation;
 import com.xiaokedou.novel.common.base.Page;
 import com.xiaokedou.novel.common.base.Pager;
+import com.xiaokedou.novel.common.enums.NovelTypeEnum;
 import com.xiaokedou.novel.dao.mapper.NovelMapper;
 import com.xiaokedou.novel.domain.po.Novel;
 import com.xiaokedou.novel.domain.vo.ChapterContent;
@@ -106,16 +107,32 @@ public class NovelServiceImpl implements NovelService {
     }
 
     @Override
-    public List <Novel> getPageOrderByLastUpdateTime(Pager pager) {
+    public List <Novel> getPageByTypeOrderByLastUpdateTime(Pager pager, NovelTypeEnum typeEnum) {
         Page <String> page = new Page <String>();
         page.setPager(pager);
-        return novelDao.selectPageOrderByLastUpdateTime(page);
+        if (null != typeEnum){
+            page.setT(typeEnum.getLabel());
+        }
+        return novelDao.selectPageByTypeOrderByLastUpdateTime(page);
     }
 
     @Override
-    public List <Novel> getPageOrderByAddTime(Pager pager) {
+    public List <Novel> getPageByTypeOrderByAddTime(Pager pager,NovelTypeEnum typeEnum) {
         Page <String> page = new Page <String>();
         page.setPager(pager);
-        return novelDao.selectPageOrderByAddTime(page);
+        if (null != typeEnum){
+            page.setT(typeEnum.getLabel());
+        }
+        return novelDao.selectPageByTypeOrderByAddTime(page);
+    }
+
+    @Override
+    public List <Novel> getPageByTypeOrderByTotalClick(Pager pager, NovelTypeEnum typeEnum) {
+        Page <String> page = new Page <String>();
+        page.setPager(pager);
+        if (null != typeEnum){
+            page.setT(typeEnum.getLabel());
+        }
+        return novelDao.selectPageByTypeOrderByTotalClick(page);
     }
 }

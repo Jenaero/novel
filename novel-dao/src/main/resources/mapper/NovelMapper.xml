@@ -44,15 +44,36 @@
     limit #{pager.offset},#{pager.pageSize}
   </select>
 
-  <select id="selectPageOrderByLastUpdateTime" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+  <select id="selectPageByTypeOrderByLastUpdateTime" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
     select * from novel
+    <where>
+      <if test="t != null and t != '' ">
+        type like  '%${t}%'
+      </if>
+    </where>
     order by last_update_time desc
     limit #{pager.offset},#{pager.pageSize}
   </select>
 
-  <select id="selectPageOrderByAddTime" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+  <select id="selectPageByTypeOrderByAddTime" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
     select * from novel
+    <where>
+      <if test="t != null and t != '' ">
+        type like  '%${t}%'
+      </if>
+    </where>
     order by add_time desc
+    limit #{pager.offset},#{pager.pageSize}
+  </select>
+
+  <select id="selectPageByTypeOrderByTotalClick" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+    select * from novel
+    <where>
+      <if test="t != null and t != '' ">
+        type like  '%${t}%'
+      </if>
+    </where>
+    order by total_click desc
     limit #{pager.offset},#{pager.pageSize}
   </select>
 

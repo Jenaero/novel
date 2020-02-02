@@ -1,6 +1,7 @@
 package com.xiaokedou.novel.web.controller;
 
 import com.xiaokedou.novel.common.base.Pager;
+import com.xiaokedou.novel.common.enums.NovelTypeEnum;
 import com.xiaokedou.novel.domain.po.Novel;
 import com.xiaokedou.novel.domain.vo.EncryptedNovel;
 import com.xiaokedou.novel.service.front.NovelService;
@@ -36,8 +37,8 @@ public class ShowNovelsNewController {
 		List <Novel> hots = novelService.searchNovelByTypes(types, new Pager(13));
 		Map <String, List <Novel>> hotsMap = hots.stream().collect(Collectors.groupingBy(Novel::getType));
 		//最近更新小说 30
-		List <Novel> lastUpdates = novelService.getPageOrderByLastUpdateTime(new Pager(30));
-		List <Novel> lastAdds = novelService.getPageOrderByAddTime(new Pager(30));
+		List <Novel> lastUpdates = novelService.getPageByTypeOrderByLastUpdateTime(new Pager(30),null);
+		List <Novel> lastAdds = novelService.getPageByTypeOrderByAddTime(new Pager(30),null);
 		//最新入库小说 30
 		model.addAttribute("items",items);
 		model.addAttribute("hotsMap",hotsMap);
@@ -48,7 +49,7 @@ public class ShowNovelsNewController {
 	}
 
 	@RequestMapping(value = "/channel",method = RequestMethod.GET)
-	public String autoIndex(Model model){
+	public String channel(Model model){
 		//top
 		List<Novel> items=novelService.searchNovelByNameAuthor(null,new Pager(6));
 		//玄幻、修真、都市、穿越、网游、科幻
@@ -56,12 +57,12 @@ public class ShowNovelsNewController {
 		//武侠修真,游戏竞技,玄幻魔法,现代都市,科幻灵异,言情小说
 		List <String> types = Arrays.asList("武侠修真","游戏竞技","玄幻魔法","现代都市","科幻灵异","言情小说");
 		//玄幻最近更新小说 30
-		List <Novel> lastUpdates = novelService.getPageByTypeOrderByLastUpdateTime(new Pager(30));
-		List <Novel> lastAdds = novelService.getPageByTypeOrderByLastUpdateTime(new Pager(30));
+		List <Novel> lastUpdates = novelService.getPageByTypeOrderByLastUpdateTime(new Pager(50), NovelTypeEnum.F);
+		List <Novel> hots = novelService.getPageByTypeOrderByTotalClick(new Pager(50),NovelTypeEnum.F);
 		//玄幻最新入库小说 30
 		model.addAttribute("items",items);
 		model.addAttribute("lastUpdates",lastUpdates);
-		model.addAttribute("lastAdds",lastAdds);
+		model.addAttribute("hots",hots);
 
 		return "channel";
 	}
