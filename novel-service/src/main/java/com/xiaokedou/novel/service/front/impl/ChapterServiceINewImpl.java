@@ -96,4 +96,10 @@ public class ChapterServiceINewImpl implements ChapterService {
         List <Chapter> chapters = chapterSpider.getChapters(url, offset, length);
         return chapters;
     }
+
+    @Override
+    public List <Chapter> getChaptersByNovelId(Long id) {
+        LambdaQueryWrapper <Chapter> queryWrapper = new LambdaQueryWrapper <Chapter>().eq(Chapter::getNovelId, id);
+        return chapterDao.selectList(queryWrapper);
+    }
 }

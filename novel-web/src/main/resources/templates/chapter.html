@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+  <head>
+    <title>xxx小说_xxx小说网</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="xxx小说,xxx小说网" />
+    <meta name="description" content="xxx小说致力于打造无广告无弹窗的在线小说阅读网站，提供小说在线阅读，小说TXT下载，网站没有弹窗广告页面简洁。" />
+    <link rel="stylesheet" type="text/css" href="./common/app.css" />
+    <script type="text/javascript" src="./common/jquery.min.js"></script>
+    <script type="text/javascript" src="./common/app.js"></script>
+  </head>
+  
+  <body>
+    <div id="wrapper">
+      <!--Logo+搜索（公共部分）-->
+      <div class="header">
+        <div class="header_logo">
+          <a href="#">xxx小说</a>
+        </div>
+        <script>bqg_panel();</script>
+      </div>
+      <!--Logo+搜索（公共部分）-->
+      
+      <!--主导航条（公共部分）-->
+      <div class="nav">
+        <ul>
+          <li><a href="./index">首页</a></li>
+          <li><a href="./channel">频道页</a></li>
+          <li><a href="./chapter">章节页</a></li>
+          <li><a href="./detail">详情页</a></li>
+          <li><a href="./top">排行榜单</a></li>
+          <li><a href="./all">全部小说</a></li>
+        </ul>
+      </div>
+      <!--主导航条（公共部分）-->
+      
+      <div class="box_con">
+        <div class="con_top">
+          <div id="bdshare" class="bdshare_b" style="line-height: 12px;">
+          </div>
+          <a href="/">
+            顶点小说</a>
+          <!--&gt; 玄幻小说 &gt; 十三印最新章节-->
+          &gt; 玄幻小说 &gt; [[${novel.name}]]最新章节
+        </div>
+        <div id="maininfo">
+          <div id="info">
+            <h1 th:text="${novel.name}">
+              十三印
+            </h1>
+            <p>
+              作&nbsp;&nbsp;&nbsp;&nbsp;者：[[${novel.author}]]
+            </p>
+            <p>
+              动&nbsp;&nbsp;&nbsp;&nbsp;作：
+              <a href="#footer">直达底部</a>
+            </p>
+            <p>
+              最后更新：[[${novel.lastUpdateTime}]]
+            </p>
+            <p>
+              下&nbsp;&nbsp;&nbsp;&nbsp;载：
+              <font color="gray">
+                (<a href="#">TXT</a>,CHM,UMD,JAR,APK,HTML)
+              </font>
+            </p>
+          </div>
+          <div id="intro" th:text="${novel.introduction}">
+            <p>
+              心潮澎湃，无限幻想，迎风挥击千层浪，少年不败热血！
+            </p>
+          </div>
+        </div>
+        <div id="sidebar">
+          <div id="fmimg">
+            <img th:src="${novel.img}" width="152" height="195" />
+          </div>
+        </div>
+        <!--热门推荐 begin-->
+        <div id="listtj">
+          &nbsp;热门推荐：
+          <a th:each="hot : ${hots}" th:text="${hot.name}" th:href="${hot.novelUrl}"></a>
+          <!--<a href="#">圣墟</a>-->
+          <!--<a href="#">龙王传说</a>-->
+          <!--<a href="#">三寸人间</a>-->
+          <!--<a href="#">天下第九</a>-->
+          <!--<a href="#">飞剑问道</a>-->
+          <!--<a href="#">我是至尊</a>-->
+          <!--<a href="#">凡人修仙之仙界篇</a>-->
+          <!--<a href="#">元尊</a>-->
+          <!--<a href="#">大道朝天</a>-->
+          <!--<a href="#">大龟甲师</a>-->
+        </div>
+        <!--热门推荐 end-->
+      </div>
+			
+      <div class="dahengfu">
+        <script type="text/javascript">ad01();</script>
+      </div>
+			
+      <div class="box_con">
+        <div id="list">
+          <dl>
+            <dt>
+              <b>
+                《[[${novel.name}]]》最新章节
+              </b>
+              （提示：已启用缓存技术，最新章节可能会延时显示，登录书架即可实时查看。）
+            </dt>
+            <!--没有使用调用最新章节，请删除模版中{?$new9?}-->
+            <dt>
+              《[[${novel.name}]]》正文
+            </dt>
+            <dd th:each="chapter : ${chapters}">
+              <a th:href="${chapter.url}" th:text="${chapter.name}">第一章 青梅竹马</a>
+            </dd>
+          </dl>
+        </div>
+      </div>
+			
+      <div class="dahengfu">
+        <script type="text/javascript">ad02();</script>
+      </div>
+      
+      <div id="footer" name="footer">
+        <!--新书推荐 begin-->
+        <div class="footer_link">
+          &nbsp;新书推荐：
+          <a href="#">娱乐大电影时代</a>
+          <a href="#">神豪的娱乐生活</a>
+          <a href="#">古妖血裔</a>
+          <a href="#">奶爸的异界神庙</a>
+          <a href="#">山河阙</a>
+          <a href="#">超级通灵系统</a>
+          <a href="#">无敌剑修系统</a>
+          <a href="#">黄昏的英灵</a>
+          <a href="#">极品修仙法则</a>
+        </div>
+        <!--新书推荐 end-->
+        
+         <div class="footer_cont">
+            <p>
+              《十三印》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的玄幻小说，顶点小说转载收集十三印最新章节。
+            </p>
+            <script>
+              footer();
+              right();
+              dl();
+            </script>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

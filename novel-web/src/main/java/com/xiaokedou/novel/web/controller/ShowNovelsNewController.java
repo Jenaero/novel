@@ -2,8 +2,10 @@ package com.xiaokedou.novel.web.controller;
 
 import com.xiaokedou.novel.common.base.Pager;
 import com.xiaokedou.novel.common.enums.NovelTypeEnum;
+import com.xiaokedou.novel.domain.po.Chapter;
 import com.xiaokedou.novel.domain.po.Novel;
 import com.xiaokedou.novel.domain.vo.EncryptedNovel;
+import com.xiaokedou.novel.service.front.ChapterService;
 import com.xiaokedou.novel.service.front.NovelService;
 import com.xiaokedou.novel.service.util.EncryptUtils;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ import java.util.stream.Collectors;
 public class ShowNovelsNewController {
 	@Resource
 	private NovelService novelService;
+
+	@Resource
+	private ChapterService chapterService;
 
 	@RequestMapping(value = {"/","/index"},method = RequestMethod.GET)
 	public String index(Model model){
@@ -66,8 +71,36 @@ public class ShowNovelsNewController {
 
 		return "channel";
 	}
-	
 
+	@RequestMapping(value = "/chapter",method = RequestMethod.GET)
+	public String chapter(Model model,Long id){
+		//默认元尊
+		Long defaultId = 2020012819052215L;
+		id = id == null ? defaultId : id;
+		Novel novel = novelService.getOneNovel(id);
+		List <Chapter> chapters = chapterService.getChaptersByNovelId(id);
+		//热门推荐
+		List <Novel> hots = novelService.getPageByTypeOrderByTotalClick(new Pager(10),NovelTypeEnum.F);
+		model.addAttribute("novel",novel);
+		model.addAttribute("chapters",chapters);
+		model.addAttribute("hots",hots);
+		return "chapter";
+	}
+
+	@RequestMapping(value = "/detail",method = RequestMethod.GET)
+	public String detail(Model model){
+		return "detail";
+	}
+
+	@RequestMapping(value = "/top",method = RequestMethod.GET)
+	public String top(Model model){
+		return "top";
+	}
+
+	@RequestMapping(value = "/all",method = RequestMethod.GET)
+	public String all(Model model){
+		return "all";
+	}
 
 	@ResponseBody
 	@RequestMapping("getNovel.action")

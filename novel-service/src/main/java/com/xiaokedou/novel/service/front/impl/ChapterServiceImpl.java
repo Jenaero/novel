@@ -67,4 +67,9 @@ public class ChapterServiceImpl implements ChapterService {
         List <Chapter> chapters = chapterSpider.getChapters(url, offset, length);
         return chapters;
     }
+
+    @Override
+    public List <Chapter> getChaptersByNovelId(Long id) {
+        return null;
+    }
 }
