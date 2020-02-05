@@ -20,9 +20,9 @@ public class NovelServiceImpl implements NovelService {
     @Resource
     private NovelMapper novelDao;
 
-    @RedisAnontation(clazz = Novel.class, serialType = RedisAnontation.SerialType.OBJ)
+//    @RedisAnontation(clazz = Novel.class, serialType = RedisAnontation.SerialType.OBJ)
     public Novel getOneNovel(Long id) {
-        Novel novel = novelDao.selectByPrimaryKey(1l);
+        Novel novel = novelDao.selectByPrimaryKey(id);
         return novel;
     }
 

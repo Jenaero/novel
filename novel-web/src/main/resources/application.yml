@@ -9,3 +9,8 @@ spring:
 
 #logging:
 #  level: debug
+
+
+novel:
+  defaultNovelId: 2019122517010269
+  defaultChapterId: 2019122517010975

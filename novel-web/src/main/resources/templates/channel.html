@@ -41,14 +41,14 @@
 			      <div class="ll">
 			        <div class="item" th:each="item : ${items}">
 			          <div class="image">
-			            <a th:href="${item.novelUrl}">
+			            <a th:href="@{/chapter(novelId=${item.id})}">
 			              <img th:src="${item.img}" th:alt="${item.name}" width="120" height="150" />
 			            </a>
 			          </div>
 						<dl>
 							<dt>
 								<span th:text="${item.author}">author</span>
-								<a th:href="${item.novelUrl}" th:text="${item.name}">name</a>
+								<a th:href="@{/chapter(novelId=${item.id})}" th:text="${item.name}">name</a>
 							</dt>
 							<dd th:text="${item.introduction}">intro</dd>
 						</dl>
@@ -69,13 +69,13 @@
 						<li th:each="update : ${lastUpdates}">
 			            <span class="s2">
 			              《
-			              <a th:href="${update.novelUrl}" th:text="${update.name}">
+			              <a th:href="@{/chapter(novelId=${update.id})}" th:text="${update.name}">
 			                圣墟
 			              </a>
 			              》
 			            </span>
 							<span class="s3">
-			              <a th:href="${update.lastUpdateChapterUrl}" th:text="${update.lastUpdateChapter}">
+			              <a th:href="@{/detail(chapterName=${update.lastUpdateChapter})}" th:text="${update.lastUpdateChapter}">
 			              </a>
 			              ([[${#dates.format(update.lastUpdateTime,'MM-dd')}]])
 			            </span>
@@ -92,7 +92,7 @@
 					<ul>
 						<li th:each="hot : ${hots}">
 			            <span class="s2">
-			              <a th:href="${hot.novelUrl}" th:text="${hot.name}">
+			              <a th:href="@{/chapter(novelId=${hot.id})}" th:text="${hot.name}">
 			                圣墟
 			              </a>
 			            </span >

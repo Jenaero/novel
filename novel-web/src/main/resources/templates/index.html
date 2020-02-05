@@ -42,13 +42,13 @@
               <div class="l">
                 <div class="item" th:each="item : ${items}">
                   <div class="image">
-                    <a th:href="${item.novelUrl}">
+                    <a th:href="@{/chapter(novelId=${item.id})}">
                       <img th:src="${item.img}" th:alt="${item.name}" width="120" height="150" /></a>
                   </div>
                   <dl>
                     <dt>
                       <span th:text="${item.author}">author</span>
-                      <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>
+                      <a th:href="@{/chapter(novelId=${item.id})}" th:text="${item.name}">name</a>
                     </dt>
                     <dd th:text="${item.introduction}">intro</dd>
                   </dl>
@@ -71,7 +71,7 @@
                   </div>
                   <dl>
                     <dt>
-                      <a th:href="${hotsMap.get('武侠修真').get(0).novelUrl}" th:text="${hotsMap.get('武侠修真').get(0).name}">真武世界</a>
+                      <a th:href="@{/chapter(novelId=${hotsMap.get('武侠修真').get(0).id})}" th:text="${hotsMap.get('武侠修真').get(0).name}">真武世界</a>
                     </dt>
                     <dd th:text="${hotsMap.get('武侠修真').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
                     </dd>
@@ -80,7 +80,7 @@
                 </div>
                 <ul >
                   <li th:each="item : ${hotsMap.get('武侠修真')}" th:if="${itemStat.index}>0" th:inline="text">
-                    <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                    <a th:href="@{/chapter(novelId=${item.id})}" th:text="${item.name}">name</a>/[[${item.author}]]
                   </li>
                 </ul>
               </div>
@@ -93,7 +93,7 @@
                   </div>
                   <dl>
                     <dt>
-                      <a th:href="${hotsMap.get('游戏竞技').get(0).novelUrl}" th:text="${hotsMap.get('游戏竞技').get(0).name}">真武世界</a>
+                      <a th:href="@{/chapter(novelId=${hotsMap.get('游戏竞技').get(0).id})}" th:text="${hotsMap.get('游戏竞技').get(0).name}">真武世界</a>
                     </dt>
                     <dd th:text="${hotsMap.get('游戏竞技').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
                     </dd>
@@ -102,7 +102,7 @@
                 </div>
                 <ul >
                   <li th:each="item : ${hotsMap.get('游戏竞技')}" th:if="${itemStat.index}>0" th:inline="text">
-                    <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                    <a th:href="@{/chapter(novelId=${item.id})}" th:text="${item.name}">name</a>/[[${item.author}]]
                   </li>
                 </ul>
               </div>
@@ -115,7 +115,7 @@
                   </div>
                   <dl>
                     <dt>
-                        <a th:href="${hotsMap.get('玄幻魔法').get(0).novelUrl}" th:text="${hotsMap.get('玄幻魔法').get(0).name}">真武世界</a>
+                        <a th:href="@{/chapter(novelId=${hotsMap.get('玄幻魔法').get(0).id})}" th:text="${hotsMap.get('玄幻魔法').get(0).name}">真武世界</a>
                     </dt>
                     <dd th:text="${hotsMap.get('玄幻魔法').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
                     </dd>
@@ -124,7 +124,7 @@
                 </div>
                   <ul >
                       <li th:each="item : ${hotsMap.get('玄幻魔法')}" th:if="${itemStat.index}>0" th:inline="text">
-                          <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                          <a th:href="@{/chapter(novelId=${item.id})}" th:text="${item.name}">name</a>/[[${item.author}]]
                       </li>
                   </ul>
               </div>
@@ -140,7 +140,7 @@
                   </div>
                     <dl>
                         <dt>
-                            <a th:href="${hotsMap.get('现代都市').get(0).novelUrl}" th:text="${hotsMap.get('现代都市').get(0).name}">真武世界</a>
+                            <a th:href="@{/chapter(novelId=${hotsMap.get('玄幻魔法').get(0).id})}" th:text="${hotsMap.get('现代都市').get(0).name}">真武世界</a>
                         </dt>
                         <dd th:text="${hotsMap.get('现代都市').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
                         </dd>
@@ -149,7 +149,7 @@
                 </div>
                   <ul >
                       <li th:each="item : ${hotsMap.get('现代都市')}" th:if="${itemStat.index}>0" th:inline="text">
-                          <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                          <a th:href="@{/chapter(novelId=${item.id})}" th:text="${item.name}">name</a>/[[${item.author}]]
                       </li>
                   </ul>
               </div>
@@ -162,7 +162,7 @@
                   </div>
                     <dl>
                         <dt>
-                            <a th:href="${hotsMap.get('科幻灵异').get(0).novelUrl}" th:text="${hotsMap.get('科幻灵异').get(0).name}">真武世界</a>
+                            <a th:href="@{/chapter(novelId=${hotsMap.get('玄幻魔法').get(0).id})}" th:text="${hotsMap.get('科幻灵异').get(0).name}">真武世界</a>
                         </dt>
                         <dd th:text="${hotsMap.get('科幻灵异').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
                         </dd>
@@ -171,7 +171,7 @@
                 </div>
                   <ul >
                       <li th:each="item : ${hotsMap.get('科幻灵异')}" th:if="${itemStat.index}>0" th:inline="text">
-                          <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                          <a th:href="@{/chapter(novelId=${item.id})}" th:text="${item.name}">name</a>/[[${item.author}]]
                       </li>
                   </ul>
               </div>
@@ -184,7 +184,7 @@
                   </div>
                     <dl>
                         <dt>
-                            <a th:href="${hotsMap.get('言情小说').get(0).novelUrl}" th:text="${hotsMap.get('言情小说').get(0).name}">真武世界</a>
+                            <a th:href="@{/chapter(novelId=${hotsMap.get('玄幻魔法').get(0).id})}" th:text="${hotsMap.get('言情小说').get(0).name}">真武世界</a>
                         </dt>
                         <dd th:text="${hotsMap.get('言情小说').get(0).introduction}">在破败中崛起，在寂灭中复苏。 沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……...
                         </dd>
@@ -193,7 +193,7 @@
                 </div>
                   <ul >
                       <li th:each="item : ${hotsMap.get('科幻灵异')}" th:if="${itemStat.index}>0" th:inline="text">
-                          <a th:href="${item.novelUrl}" th:text="${item.name}">name</a>/[[${item.author}]]
+                          <a th:href="@{/chapter(novelId=${item.id})}" th:text="${item.name}">name</a>/[[${item.author}]]
                       </li>
                   </ul>
               </div>
@@ -205,8 +205,8 @@
                 <ul>
                   <li th:each="update : ${lastUpdates}">
                     <span class="s1" th:text="'['+${update.type}+']'">[玄幻小说]</span>
-                    <span class="s2"><a th:href="${update.novelUrl}" th:text="${update.name}">真武世界</a></span>
-                    <span class="s3"><a th:href="${update.lastUpdateChapterUrl}" th:text="${update.lastUpdateChapter}">第一千四百九十四章擂鼓备战</a></span>
+                    <span class="s2"><a th:href="@{/chapter(novelId=${update.id})}" th:text="${update.name}">真武世界</a></span>
+                    <span class="s3"><a th:href="@{/detail(chapterName=${update.lastUpdateChapter})}" th:text="${update.lastUpdateChapter}">第一千四百九十四章擂鼓备战</a></span>
                     <span class="s4" th:text="${update.author}">青石细语</span>
                     <span class="s5">青石细语</span></li>
                 </ul>
@@ -216,7 +216,7 @@
                 <ul>
                   <li th:each="add : ${lastAdds}">
                     <span class="s1" th:text="'['+${add.type}+']'">[玄幻]</span>
-                    <span class="s2"><a th:href="${add.novelUrl}" th:text="${add.name}">真武世界</a></span>
+                    <span class="s2"><a th:href="@{/chapter(novelId=${add.id})}" th:text="${add.name}">真武世界</a></span>
                     <span class="s5" th:text="${add.author}">青石细语</span></li>
                 </ul>
               </div>

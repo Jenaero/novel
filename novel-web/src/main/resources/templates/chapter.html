@@ -42,7 +42,7 @@
           <a href="/">
             顶点小说</a>
           <!--&gt; 玄幻小说 &gt; 十三印最新章节-->
-          &gt; 玄幻小说 &gt; [[${novel.name}]]最新章节
+          &gt; [[${novel.type}]] &gt; [[${novel.name}]]最新章节
         </div>
         <div id="maininfo">
           <div id="info">
@@ -57,7 +57,7 @@
               <a href="#footer">直达底部</a>
             </p>
             <p>
-              最后更新：[[${novel.lastUpdateTime}]]
+              最后更新：[[${#dates.format(novel.lastUpdateTime,'MM-dd')}]]
             </p>
             <p>
               下&nbsp;&nbsp;&nbsp;&nbsp;载：
@@ -80,17 +80,7 @@
         <!--热门推荐 begin-->
         <div id="listtj">
           &nbsp;热门推荐：
-          <a th:each="hot : ${hots}" th:text="${hot.name}" th:href="${hot.novelUrl}"></a>
-          <!--<a href="#">圣墟</a>-->
-          <!--<a href="#">龙王传说</a>-->
-          <!--<a href="#">三寸人间</a>-->
-          <!--<a href="#">天下第九</a>-->
-          <!--<a href="#">飞剑问道</a>-->
-          <!--<a href="#">我是至尊</a>-->
-          <!--<a href="#">凡人修仙之仙界篇</a>-->
-          <!--<a href="#">元尊</a>-->
-          <!--<a href="#">大道朝天</a>-->
-          <!--<a href="#">大龟甲师</a>-->
+          <a th:each="hot : ${hots}" th:text="${hot.name}" th:href="@{/chapter(novelId=${hot.id})}" style="margin-right: 3px"></a>
         </div>
         <!--热门推荐 end-->
       </div>
@@ -113,7 +103,7 @@
               《[[${novel.name}]]》正文
             </dt>
             <dd th:each="chapter : ${chapters}">
-              <a th:href="${chapter.url}" th:text="${chapter.name}">第一章 青梅竹马</a>
+              <a th:href="@{/detail(chapterId=${chapter.id})}" th:text="${chapter.title}">第一章 青梅竹马</a>
             </dd>
           </dl>
         </div>
@@ -127,21 +117,13 @@
         <!--新书推荐 begin-->
         <div class="footer_link">
           &nbsp;新书推荐：
-          <a href="#">娱乐大电影时代</a>
-          <a href="#">神豪的娱乐生活</a>
-          <a href="#">古妖血裔</a>
-          <a href="#">奶爸的异界神庙</a>
-          <a href="#">山河阙</a>
-          <a href="#">超级通灵系统</a>
-          <a href="#">无敌剑修系统</a>
-          <a href="#">黄昏的英灵</a>
-          <a href="#">极品修仙法则</a>
+          <a th:each="nw : ${news}" th:text="${nw.name}" th:href="@{/chapter(novelId=${nw.id})}" style="margin-right: 3px"></a>
         </div>
         <!--新书推荐 end-->
         
          <div class="footer_cont">
             <p>
-              《十三印》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的玄幻小说，顶点小说转载收集十三印最新章节。
+              《[[${novel.name}]]》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的[[${novel.type}]]小说，顶点小说转载收集[[${novel.name}]]最新章节。
             </p>
             <script>
               footer();

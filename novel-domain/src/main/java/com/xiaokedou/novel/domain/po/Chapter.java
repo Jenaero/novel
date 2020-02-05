@@ -12,9 +12,9 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Chapter implements Serializable {
     private static final long serialVersionUID = -7574082095190014403L;
-    //小说Id
-    private Long id;
     //章节Id
+    private Long id;
+    //小说Id
     private Long novelId;
     //书名
     private String name;

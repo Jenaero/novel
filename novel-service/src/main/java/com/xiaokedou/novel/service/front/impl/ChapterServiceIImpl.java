@@ -12,23 +12,19 @@ import com.xiaokedou.novel.domain.vo.ChapterList;
 import com.xiaokedou.novel.domain.vo.EncryptedChapter;
 import com.xiaokedou.novel.domain.vo.EncryptedChapterDetail;
 import com.xiaokedou.novel.service.front.ChapterService;
-import com.xiaokedou.novel.service.spider.IChapterDetailSpider;
 import com.xiaokedou.novel.service.spider.IChapterSpider;
 import com.xiaokedou.novel.service.util.EncryptUtils;
 import com.xiaokedou.novel.service.util.NovelSpiderFactory;
 import com.xiaokedou.novel.service.util.NovelSpiderUtil;
-import org.jsoup.select.Elements;
 import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 
-//@Service
-public class ChapterServiceINewImpl implements ChapterService {
+@Service
+public class ChapterServiceIImpl implements ChapterService {
     {
         NovelSpiderUtil.setConfPath("../webapps/Spider-Rule.xml");
     }
@@ -101,5 +97,11 @@ public class ChapterServiceINewImpl implements ChapterService {
     public List <Chapter> getChaptersByNovelId(Long id) {
         LambdaQueryWrapper <Chapter> queryWrapper = new LambdaQueryWrapper <Chapter>().eq(Chapter::getNovelId, id);
         return chapterDao.selectList(queryWrapper);
+    }
+
+    @Override
+    public Chapter getChapterByName(String chapterName) {
+        LambdaQueryWrapper <Chapter> queryWrapper = new LambdaQueryWrapper <Chapter>().eq(Chapter::getTitle, chapterName);
+        return chapterDao.selectOne(queryWrapper);
     }
 }

@@ -18,4 +18,6 @@ public interface ChapterService {
     ChapterList getChapters(String url, int offset, int length);
 
     List <Chapter> getChaptersByNovelId(Long id);
+
+    Chapter getChapterByName(String chapterName);
 }
