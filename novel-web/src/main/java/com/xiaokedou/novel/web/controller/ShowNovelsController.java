@@ -1,6 +1,7 @@
 package com.xiaokedou.novel.web.controller;
 
 import com.xiaokedou.novel.common.base.Pager;
+import com.xiaokedou.novel.common.enums.NovelStatusEnum;
 import com.xiaokedou.novel.common.enums.NovelTypeEnum;
 import com.xiaokedou.novel.dao.mapper.ChapterDetailMapper;
 import com.xiaokedou.novel.domain.po.Chapter;
@@ -14,14 +15,18 @@ import com.xiaokedou.novel.service.util.EncryptUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +54,7 @@ public class ShowNovelsController {
 	@RequestMapping(value = {"/","/index"},method = RequestMethod.GET)
 	public String index(Model model){
 		//top
-		List<Novel> items=novelService.searchNovelByNameAuthor(null,new Pager(6));
+		List<Novel> items=novelService.getPageByTypeOrderByTotalClick(new Pager(6),null);
 		//玄幻、修真、都市、穿越、网游、科幻
 		//其他类型,历史军事,同人小说,武侠修真,游戏竞技,玄幻魔法,现代都市,科幻灵异,耽美小说,言情小说
 		//武侠修真,游戏竞技,玄幻魔法,现代都市,科幻灵异,言情小说
@@ -71,7 +76,7 @@ public class ShowNovelsController {
 	@RequestMapping(value = "/channel",method = RequestMethod.GET)
 	public String channel(Model model){
 		//top
-		List<Novel> items=novelService.searchNovelByNameAuthor(null,new Pager(6));
+		List<Novel> items=novelService.getPageByTypeOrderByTotalClick(new Pager(6),null);
 		//玄幻、修真、都市、穿越、网游、科幻
 		//其他类型,历史军事,同人小说,武侠修真,游戏竞技,玄幻魔法,现代都市,科幻灵异,耽美小说,言情小说
 		//武侠修真,游戏竞技,玄幻魔法,现代都市,科幻灵异,言情小说
@@ -127,9 +132,11 @@ public class ShowNovelsController {
 		return "detail";
 	}
 
-	@RequestMapping(value = "/top",method = RequestMethod.GET)
-	public String top(Model model){
-		return "top";
+	@RequestMapping(value = "/search",method = RequestMethod.GET)
+	public String search(RedirectAttributes model, String keyWord){
+		List <Novel> novels = novelService.searchNovelByNameAuthor(keyWord, new Pager(1));
+		model.addAttribute("novelId", CollectionUtils.isEmpty(novels)? null : novels.get(0).getId());
+		return "redirect:/chapter";
 	}
 
 	@RequestMapping(value = "/all",method = RequestMethod.GET)
@@ -161,6 +168,90 @@ public class ShowNovelsController {
 		model.addAttribute("typeENovels",typeENovels);
 		model.addAttribute("typeFNovels",typeFNovels);
 		return "all";
+	}
+
+	@RequestMapping(value = "/top",method = RequestMethod.GET)
+	public String top(Model model){
+		//其他类型,历史军事,同人小说,武侠修真,游戏竞技,玄幻魔法,现代都市,科幻灵异,耽美小说,言情小说
+		//玄幻、奇幻小说推荐排行榜 20
+		List <String> typeA = Arrays.asList("玄幻魔法");
+		List <Novel> typeATotalTops = novelService.getPageByTypesOrderByTotalClick(typeA,new Pager(20));
+		List <Novel> typeAMonthTops = novelService.getPageByTypesOrderByMonthClick(typeA,new Pager(20));
+		List <Novel> typeAWeekTops = novelService.getPageByTypesOrderByWeekClick(typeA,new Pager(20));
+
+		//修真、仙侠小说推荐排行榜 20
+		List <String> typeB = Arrays.asList("武侠修真");
+		List <Novel> typeBTotalTops = novelService.getPageByTypesOrderByTotalClick(typeB,new Pager(20));
+		List <Novel> typeBMonthTops = novelService.getPageByTypesOrderByMonthClick(typeB,new Pager(20));
+		List <Novel> typeBWeekTops = novelService.getPageByTypesOrderByWeekClick(typeB,new Pager(20));
+
+		//都市、青春小说推荐排行榜 20
+		List <String> typeC = Arrays.asList("耽美小说","言情小说");
+		List <Novel> typeCTotalTops = novelService.getPageByTypesOrderByTotalClick(typeC,new Pager(20));
+		List <Novel> typeCMonthTops = novelService.getPageByTypesOrderByMonthClick(typeC,new Pager(20));
+		List <Novel> typeCWeekTops = novelService.getPageByTypesOrderByWeekClick(typeC,new Pager(20));
+
+		//历史、穿越小说推荐排行榜 20
+		List <String> typeD = Arrays.asList("历史军事","同人小说");
+		List <Novel> typeDTotalTops = novelService.getPageByTypesOrderByTotalClick(typeD,new Pager(20));
+		List <Novel> typeDMonthTops = novelService.getPageByTypesOrderByMonthClick(typeD,new Pager(20));
+		List <Novel> typeDWeekTops = novelService.getPageByTypesOrderByWeekClick(typeD,new Pager(20));
+
+		//网游、竞技小说推荐排行榜 20
+		List <String> typeE = Arrays.asList("游戏竞技");
+		List <Novel> typeETotalTops = novelService.getPageByTypesOrderByTotalClick(typeE,new Pager(20));
+		List <Novel> typeEMonthTops = novelService.getPageByTypesOrderByMonthClick(typeE,new Pager(20));
+		List <Novel> typeEWeekTops = novelService.getPageByTypesOrderByWeekClick(typeE,new Pager(20));
+
+		//科幻、灵异小说推荐排行榜 20
+		List <String> typeF = Arrays.asList("科幻灵异");
+		List <Novel> typeFTotalTops = novelService.getPageByTypesOrderByTotalClick(typeF,new Pager(20));
+		List <Novel> typeFMonthTops = novelService.getPageByTypesOrderByMonthClick(typeF,new Pager(20));
+		List <Novel> typeFWeekTops = novelService.getPageByTypesOrderByWeekClick(typeF,new Pager(20));
+
+		//全本小说推荐排行榜 20
+		List <Novel> completeTotalTops = novelService.getPageByStatusOrderByTotalClick(NovelStatusEnum.complete.getKey(),new Pager(20));
+		List <Novel> completeMonthTops = novelService.getPageByStatusOrderByMonthClick(NovelStatusEnum.complete.getKey(),new Pager(20));
+		List <Novel> completeWeekTops = novelService.getPageByStatusOrderByWeekClick(NovelStatusEnum.complete.getKey(),new Pager(20));
+
+		//全部小说推荐排行榜 20
+		List <Novel> allTotalTops = novelService.getPageByStatusOrderByTotalClick(null,new Pager(20));
+		List <Novel> allMonthTops = novelService.getPageByStatusOrderByMonthClick(null,new Pager(20));
+		List <Novel> allWeekTops = novelService.getPageByStatusOrderByWeekClick(null,new Pager(20));
+
+		model.addAttribute("typeATotalTops",typeATotalTops);
+		model.addAttribute("typeAMonthTops",typeAMonthTops);
+		model.addAttribute("typeAWeekTops",typeAWeekTops);
+
+		model.addAttribute("typeBTotalTops",typeBTotalTops);
+		model.addAttribute("typeBMonthTops",typeBMonthTops);
+		model.addAttribute("typeBWeekTops",typeBWeekTops);
+
+		model.addAttribute("typeCTotalTops",typeCTotalTops);
+		model.addAttribute("typeCMonthTops",typeCMonthTops);
+		model.addAttribute("typeCWeekTops",typeCWeekTops);
+
+		model.addAttribute("typeDTotalTops",typeDTotalTops);
+		model.addAttribute("typeDMonthTops",typeDMonthTops);
+		model.addAttribute("typeDWeekTops",typeDWeekTops);
+
+		model.addAttribute("typeETotalTops",typeETotalTops);
+		model.addAttribute("typeEMonthTops",typeEMonthTops);
+		model.addAttribute("typeEWeekTops",typeEWeekTops);
+
+		model.addAttribute("typeFTotalTops",typeFTotalTops);
+		model.addAttribute("typeFMonthTops",typeFMonthTops);
+		model.addAttribute("typeFWeekTops",typeFWeekTops);
+
+		model.addAttribute("completeTotalTops",completeTotalTops);
+		model.addAttribute("completeMonthTops",completeMonthTops);
+		model.addAttribute("completeWeekTops",completeWeekTops);
+
+		model.addAttribute("allTotalTops",allTotalTops);
+		model.addAttribute("allMonthTops",allMonthTops);
+		model.addAttribute("allWeekTops",allWeekTops);
+
+		return "top";
 	}
 
 	@ResponseBody

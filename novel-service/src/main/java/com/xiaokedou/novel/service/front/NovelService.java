@@ -40,4 +40,16 @@ public interface NovelService {
     public List<Novel> getPageByTypeOrderByAddTime(Pager pager,NovelTypeEnum typeEnum);
 
     public List<Novel> getPageByTypeOrderByTotalClick(Pager pager, NovelTypeEnum f);
+
+    public List<Novel> getPageByTypesOrderByTotalClick(List<String> typeA, Pager pager);
+
+    public List<Novel> getPageByTypesOrderByMonthClick(List<String> typeA, Pager pager);
+
+    public List<Novel> getPageByTypesOrderByWeekClick(List<String> typeA, Pager pager);
+
+    public List<Novel> getPageByStatusOrderByTotalClick(Integer status, Pager pager);
+
+    public List<Novel> getPageByStatusOrderByMonthClick(Integer status, Pager pager);
+
+    public List<Novel> getPageByStatusOrderByWeekClick(Integer status, Pager pager);
 }

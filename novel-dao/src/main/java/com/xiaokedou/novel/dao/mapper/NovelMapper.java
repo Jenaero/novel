@@ -47,4 +47,16 @@ public interface NovelMapper extends BaseMapper <Novel> {
     List<Novel> selectPageByTypeOrderByAddTime(Page<String> page);
 
     List<Novel> selectPageByTypeOrderByTotalClick(Page<String> page);
+
+    List<Novel> selectPageByTypesOrderByTotalClick(Page<String> page);
+
+    List<Novel> selectPageByTypesOrderByMonthClick(Page<String> page);
+
+    List<Novel> selectPageByTypesOrderByWeekClick(Page<String> page);
+
+    List<Novel> selectPageByStatusOrderByTotalClick(Page<Integer> page);
+
+    List<Novel> selectPageByStatusOrderByMonthClick(Page<Integer> page);
+
+    List<Novel> selectPageByStatusOrderByWeekClick(Page<Integer> page);
 }

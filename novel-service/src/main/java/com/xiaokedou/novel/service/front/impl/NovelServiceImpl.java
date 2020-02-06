@@ -135,4 +135,52 @@ public class NovelServiceImpl implements NovelService {
         }
         return novelDao.selectPageByTypeOrderByTotalClick(page);
     }
+
+    @Override
+    public List <Novel> getPageByTypesOrderByTotalClick(List <String> types, Pager pager) {
+        Page <String> page = new Page <String>();
+        page.setList(types);
+        page.setPager(pager);
+        return novelDao.selectPageByTypesOrderByTotalClick(page);
+    }
+
+    @Override
+    public List <Novel> getPageByTypesOrderByMonthClick(List <String> types, Pager pager) {
+        Page <String> page = new Page <String>();
+        page.setList(types);
+        page.setPager(pager);
+        return novelDao.selectPageByTypesOrderByMonthClick(page);
+    }
+
+    @Override
+    public List <Novel> getPageByTypesOrderByWeekClick(List <String> types, Pager pager) {
+        Page <String> page = new Page <String>();
+        page.setList(types);
+        page.setPager(pager);
+        return novelDao.selectPageByTypesOrderByWeekClick(page);
+    }
+
+    @Override
+    public List <Novel> getPageByStatusOrderByTotalClick(Integer status, Pager pager) {
+        Page <Integer> page = new Page <Integer>();
+        page.setT(status);
+        page.setPager(pager);
+        return novelDao.selectPageByStatusOrderByTotalClick(page);
+    }
+
+    @Override
+    public List <Novel> getPageByStatusOrderByMonthClick(Integer status, Pager pager) {
+        Page <Integer> page = new Page <Integer>();
+        page.setT(status);
+        page.setPager(pager);
+        return novelDao.selectPageByStatusOrderByMonthClick(page);
+    }
+
+    @Override
+    public List <Novel> getPageByStatusOrderByWeekClick(Integer status, Pager pager) {
+        Page <Integer> page = new Page <Integer>();
+        page.setT(status);
+        page.setPager(pager);
+        return novelDao.selectPageByStatusOrderByWeekClick(page);
+    }
 }

@@ -653,7 +653,7 @@ function list_panel() {
 
 function bqg_panel() {
 	document.writeln(
-		"<div class=\"header_search\"><form name=\"sform\" action=\"https://search1.abc.com/modules/article/search.php  \" id=\"sform\" target=\"_blank\"><input type=\"text\" value=\"\" name=\"searchkey\" class=\"search\" id=\"wd\" baiduSug=\"2\" /><button id=\"sss\" type=\"submit\"> 搜 索 </button></form></div>"
+		"<div class=\"header_search\"><form name=\"sform\" action=\"/search  \" id=\"sform\" target=\"_blank\"><input type=\"text\" value=\"\" name=\"keyWord\" class=\"search\" id=\"wd\" baiduSug=\"2\" /><button id=\"sss\" type=\"submit\"> 搜 索 </button></form></div>"
 	);
 	// document.writeln("<div class=\"header_search\"><form name=\"form\" action=\"https://zhannei.baidu.com/csehttps://search1.abc.com/modules/article/search.php  \" id=\"sform\" target=\"_blank\"><input type=\"hidden\" name=\"s\" value=\"5334330359795686106\"><input type=\"text\" value=\"\" name=\"q\" class=\"search\" id=\"wd\" baiduSug=\"2\" /><button id=\"sss\" type=\"submit\"> 搜 索 </button></form></div>");
 	// document.writeln("<div class=\"userpanel\">&nbsp;<font color=\"red\">留言：</font><a target=\"_blank\" href=\"https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=youjian@qq.com\">通过邮件</a>、<a href=\"/newmessage.php?tosys=1\" >站内短信</a><br /><a target=\"_blank\" href=\"/jifen.html\">积分规则</a>&nbsp;&nbsp;<a target=\"_blank\" href=\"/dns.html\">解决跳到别的站</a></div>");

@@ -182,26 +182,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">圣墟</a></li>
-              <li>2 <a href="#">龙王传说</a></li>
-              <li>3 <a href="#">我是至尊</a></li>
-              <li>4 <a href="#">元尊</a></li>
-              <li>5 <a href="#">大道朝天</a></li>
-              <li>6 <a href="#">伏天氏</a></li>
-              <li>7 <a href="#">万古神帝</a></li>
-              <li>8 <a href="#">玄界之门</a></li>
-              <li>9 <a href="#">全职法师</a></li>
-              <li>10 <a href="#">大主宰</a></li>
-              <li>11 <a href="#">神藏</a></li>
-              <li>12 <a href="#">龙符</a></li>
-              <li>13 <a href="#">修罗武神</a></li>
-              <li>14 <a href="#">修炼狂潮</a></li>
-              <li>15 <a href="#">黑铁之堡</a></li>
-              <li>16 <a href="#">择天记</a></li>
-              <li>17 <a href="#">天域苍穹</a></li>
-              <li>18 <a href="#">完美世界</a></li>
-              <li>19 <a href="#">天路杀神</a></li>
-              <li>20 <a href="#">儒道至圣</a></li>
+              <li th:each="typeA : ${typeATotalTops}">
+                [[${typeAStat.count}]]<a th:href="@{/chapter(novelId=${typeA.id})}" th:text="${typeA.name}"></a>
+              </li>
               <li class="more"><span><a href="#">更多</a></span>
               </li>
             </ul>
@@ -214,21 +197,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">武神主宰</a></li>
-              <li>2 <a href="#">斗罗大陆II绝世唐门</a></li>
-              <li>3 <a href="#">全职法师</a></li>
-              <li>4 <a href="#">我是至尊</a></li>
-              <li>5 <a href="#">龙符</a></li>
-              <li>6 <a href="#">修罗武神</a></li>
-              <li>7 <a href="#">圣墟</a></li>
-              <li>8 <a href="#">灵剑尊</a></li>
-              <li>9 <a href="#">元尊</a></li>
-              <li>10 <a href="#">儒道至圣</a></li>
-              <li>11 <a href="#">剑王传说</a></li>
-              <li>12 <a href="#">全知全能者</a></li>
-              <li>13 <a href="#">证道三千界</a></li>
-              <li>14 <a href="#">核爆中走出的强者</a></li>
-              <li>15 <a href="#">创世神是怎样练成的</a></li>
+              <li th:each="typeA : ${typeAWeekTops}">
+                [[${typeAStat.count}]]<a th:href="@{/chapter(novelId=${typeA.id})}" th:text="${typeA.name}"></a>
+              </li>
               <li class="more"><span><a href="#">更多</a></span>
               </li>
             </ul>
@@ -242,26 +213,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">修罗武神</a></li>
-              <li>2 <a href="#">圣墟</a></li>
-              <li>3 <a href="#">龙符</a></li>
-              <li>4 <a href="#">我是至尊</a></li>
-              <li>5 <a href="#">都市超级医圣</a></li>
-              <li>6 <a href="#">万古神帝</a></li>
-              <li>7 <a href="#">我的神级手机助手</a></li>
-              <li>8 <a href="#">斗罗大陆II绝世唐门</a></li>
-              <li>9 <a href="#">全职法师</a></li>
-              <li>10 <a href="#">寒门崛起</a></li>
-              <li>11 <a href="#">元尊</a></li>
-              <li>12 <a href="#">龙王传说</a></li>
-              <li>13 <a href="#">放开那个女巫</a></li>
-              <li>14 <a href="#">灵剑尊</a></li>
-              <li>15 <a href="#">重生原始时代</a></li>
-              <li>16 <a href="#">神级大魔头</a></li>
-              <li>17 <a href="#">牧神记</a></li>
-              <li>18 <a href="#">大主宰</a></li>
-              <li>19 <a href="#">万域之王</a></li>
-              <li>20 <a href="#">剑王传说</a></li>
+              <li th:each="typeA : ${typeAMonthTops}">
+                [[${typeAStat.count}]]<a th:href="@{/chapter(novelId=${typeA.id})}" th:text="${typeA.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -299,27 +253,8 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">三寸人间</a></li>
-              <li>2 <a href="#">天下第九</a></li>
-              <li>3 <a href="#">飞剑问道</a></li>
-              <li>4 <a href="#">凡人修仙之仙界篇</a></li>
-              <li>5 <a href="#">仙界独尊</a></li>
-              <li>6 <a href="#">斗战狂潮</a></li>
-              <li>7 <a href="#">一剑飞仙</a></li>
-              <li>8 <a href="#">一念永恒</a></li>
-              <li>9 <a href="#">真武世界</a></li>
-              <li>10 <a href="#">道君</a></li>
-              <li>11 <a href="#">极道天魔</a></li>
-              <li>12 <a href="#">武侠世界自由行</a></li>
-              <li>13 <a href="#">道门法则</a></li>
-              <li>14 <a href="#">不朽凡人</a></li>
-              <li>15 <a href="#">丈六金身</a></li>
-              <li>16 <a href="#">魔天记</a></li>
-              <li>17 <a href="#">造化之门</a></li>
-              <li>18 <a href="#">封神大天王</a></li>
-              <li>19 <a href="#">我欲封天</a></li>
-              <li>20 <a href="#">最强神话帝皇</a></li>
-              <li class="more"><span><a href="#">更多</a></span>
+              <li th:each="typeB : ${typeBTotalTops}">
+                [[${typeBStat.count}]]<a th:href="@{/chapter(novelId=${typeB.id})}" th:text="${typeB.name}"></a>
               </li>
             </ul>
             <ul style="display:none;">
@@ -332,15 +267,9 @@
                   <a href="#">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">重生之魔教教主</a></li>
-              <li>2 <a href="#">三寸人间</a></li>
-              <li>3 <a href="#">凡人修仙之仙界篇</a></li>
-              <li>4 <a href="#">仙界独尊</a></li>
-              <li>5 <a href="#">道君</a></li>
-              <li>6 <a href="#">飞剑问道</a></li>
-              <li>7 <a href="#">极道天魔</a></li>
-              <li>8 <a href="#">真武世界</a></li>
-              <li>9 <a href="#">神级巫医在都市</a></li>
+              <li th:each="typeB : ${typeBWeekTops}">
+                [[${typeBStat.count}]]<a th:href="@{/chapter(novelId=${typeB.id})}" th:text="${typeB.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -357,24 +286,9 @@
                   <a href="#">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">凡人修仙之仙界篇</a></li>
-              <li>2 <a href="#">飞剑问道</a></li>
-              <li>3 <a href="#">道君</a></li>
-              <li>4 <a href="#">仙界独尊</a></li>
-              <li>5 <a href="#">三寸人间</a></li>
-              <li>6 <a href="#">真武世界</a></li>
-              <li>7 <a href="#">最强反套路系统</a></li>
-              <li>8 <a href="#">悠闲修仙系统</a></li>
-              <li>9 <a href="#">遮天</a></li>
-              <li>10 <a href="#">神级巫医在都市</a></li>
-              <li>11 <a href="#">极道天魔</a></li>
-              <li>12 <a href="#">重生之魔教教主</a></li>
-              <li>13 <a href="#">我是仙凡</a></li>
-              <li>14 <a href="#">长生在武侠世界</a></li>
-              <li>15 <a href="#">开个诊所来修仙</a></li>
-              <li>16 <a href="#">雷霆之主</a></li>
-              <li>17 <a href="#">拳破诸天万界</a></li>
-              <li>18 <a href="#">我的妹妹是魔神</a></li>
+              <li th:each="typeB : ${typeBMonthTops}">
+                [[${typeBStat.count}]]<a th:href="@{/chapter(novelId=${typeB.id})}" th:text="${typeB.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -412,26 +326,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">总裁校花赖上我</a></li>
-              <li>2 <a href="#">黄金渔场</a></li>
-              <li>3 <a href="#">重生完美时代</a></li>
-              <li>4 <a href="#">神级美食主播</a></li>
-              <li>5 <a href="#">超级怪兽工厂</a></li>
-              <li>6 <a href="#">美食供应商</a></li>
-              <li>7 <a href="#">修真聊天群</a></li>
-              <li>8 <a href="#">我真是大明星</a></li>
-              <li>9 <a href="#">捡宝王</a></li>
-              <li>10 <a href="#">超级全能巨星</a></li>
-              <li>11 <a href="#">黄金渔村</a></li>
-              <li>12 <a href="#">重生之最强人生</a></li>
-              <li>13 <a href="#">超级学神</a></li>
-              <li>14 <a href="#">最强狂兵</a></li>
-              <li>15 <a href="#">美国牧场的小生活</a></li>
-              <li>16 <a href="#">重生日本当厨神</a></li>
-              <li>17 <a href="#">超级仙学院</a></li>
-              <li>18 <a href="#">全能武侠系统</a></li>
-              <li>19 <a href="#">环保大师</a></li>
-              <li>20 <a href="#">农家仙田</a></li>
+              <li th:each="typeC : ${typeCTotalTops}">
+                [[${typeCStat.count}]]<a th:href="@{/chapter(novelId=${typeC.id})}" th:text="${typeC.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -448,24 +345,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">天火大道</a></li>
-              <li>2 <a href="#">我的1979</a></li>
-              <li>3 <a href="#">超级怪兽工厂</a></li>
-              <li>4 <a href="#">黑金科技</a></li>
-              <li>5 <a href="#">重生完美时代</a></li>
-              <li>6 <a href="#">重生之最强人生</a></li>
-              <li>7 <a href="#">宠物天王</a></li>
-              <li>8 <a href="#">黄金渔场</a></li>
-              <li>9 <a href="#">环保大师</a></li>
-              <li>10 <a href="#">提炼专家</a></li>
-              <li>11 <a href="#">超级全能巨星</a></li>
-              <li>12 <a href="#">朝阳警事</a></li>
-              <li>13 <a href="#">最强狂兵</a></li>
-              <li>14 <a href="#">女总裁的全能兵王</a></li>
-              <li>15 <a href="#">美食供应商</a></li>
-              <li>16 <a href="#">山洼小富农</a></li>
-              <li>17 <a href="#">超级红包神仙群</a></li>
-              <li>18 <a href="#">医品宗师</a></li>
+              <li th:each="typeC : ${typeCWeekTops}">
+                [[${typeCStat.count}]]<a th:href="@{/chapter(novelId=${typeC.id})}" th:text="${typeC.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -482,26 +364,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">黄金渔场</a></li>
-              <li>2 <a href="#">环保大师</a></li>
-              <li>3 <a href="#">朝阳警事</a></li>
-              <li>4 <a href="#">女总裁的全能兵王</a></li>
-              <li>5 <a href="#">超级全能巨星</a></li>
-              <li>6 <a href="#">黑金科技</a></li>
-              <li>7 <a href="#">农家仙田</a></li>
-              <li>8 <a href="#">神级美食主播</a></li>
-              <li>9 <a href="#">官道无疆</a></li>
-              <li>10 <a href="#">超级怪兽工厂</a></li>
-              <li>11 <a href="#">妙医鸿途</a></li>
-              <li>12 <a href="#">医品宗师</a></li>
-              <li>13 <a href="#">提炼专家</a></li>
-              <li>14 <a href="#">修真聊天群</a></li>
-              <li>15 <a href="#">校花的贴身高手</a></li>
-              <li>16 <a href="#">最强狂兵</a></li>
-              <li>17 <a href="#">我的1979</a></li>
-              <li>18 <a href="#">神级农场</a></li>
-              <li>19 <a href="#">重生之最强人生</a></li>
-              <li>20 <a href="#">天火大道</a></li>
+              <li th:each="typeC : ${typeCMonthTops}">
+                [[${typeCStat.count}]]<a th:href="@{/chapter(novelId=${typeC.id})}" th:text="${typeC.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -539,26 +404,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">中华武将召唤系统</a></li>
-              <li>2 <a href="#">抗日之将胆传奇</a></li>
-              <li>3 <a href="#">交锋</a></li>
-              <li>4 <a href="#">名侦探世界里的巫师</a></li>
-              <li>5 <a href="#">医统江山</a></li>
-              <li>6 <a href="#">带着仓库到大明</a></li>
-              <li>7 <a href="#">民国之文豪崛起</a></li>
-              <li>8 <a href="#">天道图书馆</a></li>
-              <li>9 <a href="#">红色苏联</a></li>
-              <li>10 <a href="#">赘婿</a></li>
-              <li>11 <a href="#">抗日之铁血智将</a></li>
-              <li>12 <a href="#">寒门状元</a></li>
-              <li>13 <a href="#">逍遥小书生</a></li>
-              <li>14 <a href="#">辽东钉子户</a></li>
-              <li>15 <a href="#">调教大宋</a></li>
-              <li>16 <a href="#">大魏宫廷</a></li>
-              <li>17 <a href="#">史上最强师兄</a></li>
-              <li>18 <a href="#">抗日之铁血兵王</a></li>
-              <li>19 <a href="#">帝国的朝阳</a></li>
-              <li>20 <a href="#">懒散初唐</a></li>
+              <li th:each="typeD : ${typeDTotalTops}">
+                [[${typeDStat.count}]]<a th:href="@{/chapter(novelId=${typeD.id})}" th:text="${typeD.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -575,15 +423,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">天道图书馆</a></li>
-              <li>2 <a href="#">夜行者：平妖二十年</a></li>
-              <li>3 <a href="#">大唐将军烈</a></li>
-              <li>4 <a href="#">交锋</a></li>
-              <li>5 <a href="#">三国之大爆兵</a></li>
-              <li>6 <a href="#">带着仓库到大明</a></li>
-              <li>7 <a href="#">天唐锦绣</a></li>
-              <li>8 <a href="#">寒门枭士</a></li>
-              <li>9 <a href="#">倾危大秦</a></li>
+              <li th:each="typeD : ${typeDWeekTops}">
+                [[${typeDStat.count}]]<a th:href="@{/chapter(novelId=${typeD.id})}" th:text="${typeD.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -600,26 +442,9 @@
                   <a href="#">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">交锋</a></li>
-              <li>2 <a href="#">唐砖</a></li>
-              <li>3 <a href="#">穿越1630之崛起南美</a></li>
-              <li>4 <a href="#">名侦探世界里的巫师</a></li>
-              <li>5 <a href="#">汉乡</a></li>
-              <li>6 <a href="#">自古红楼出才子</a></li>
-              <li>7 <a href="#">鹰掠九天</a></li>
-              <li>8 <a href="#">三国之大爆兵</a></li>
-              <li>9 <a href="#">大魏宫廷</a></li>
-              <li>10 <a href="#">大唐将军烈</a></li>
-              <li>11 <a href="#">大明1630</a></li>
-              <li>12 <a href="#">天道图书馆</a></li>
-              <li>13 <a href="#">带着仓库到大明</a></li>
-              <li>14 <a href="#">逍遥小书生</a></li>
-              <li>15 <a href="#">天唐锦绣</a></li>
-              <li>16 <a href="#">寒门枭士</a></li>
-              <li>17 <a href="#">逍遥小地主</a></li>
-              <li>18 <a href="#">隋末之群英逐鹿</a></li>
-              <li>19 <a href="#">夜行者：平妖二十年</a></li>
-              <li>20 <a href="#">娱乐春秋</a></li>
+              <li th:each="typeD : ${typeDMonthTops}">
+                [[${typeDStat.count}]]<a th:href="@{/chapter(novelId=${typeD.id})}" th:text="${typeD.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -657,26 +482,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">超神机械师</a></li>
-              <li>2 <a href="#">巫界术士</a></li>
-              <li>3 <a href="#">修真四万年</a></li>
-              <li>4 <a href="#">英雄联盟之决胜巅峰</a></li>
-              <li>5 <a href="#">贼行天下2死亡游戏</a></li>
-              <li>6 <a href="#">深渊主宰</a></li>
-              <li>7 <a href="#">超级卡牌系统</a></li>
-              <li>8 <a href="#">暗夜游侠</a></li>
-              <li>9 <a href="#">体坛之篮球教父</a></li>
-              <li>10 <a href="#">全能运动员</a></li>
-              <li>11 <a href="#">恶魔囚笼</a></li>
-              <li>12 <a href="#">重生之我是BOSS</a></li>
-              <li>13 <a href="#">限制级巨星</a></li>
-              <li>14 <a href="#">全能游戏设计师</a></li>
-              <li>15 <a href="#">大盗贼</a></li>
-              <li>16 <a href="#">篮坛教皇</a></li>
-              <li>17 <a href="#">逍遥梦路</a></li>
-              <li>18 <a href="#">无敌大领主</a></li>
-              <li>19 <a href="#">惊悚乐园</a></li>
-              <li>20 <a href="#">武林半侠传</a></li>
+              <li th:each="typeE : ${typeETotalTops}">
+                [[${typeEStat.count}]]<a th:href="@{/chapter(novelId=${typeE.id})}" th:text="${typeE.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -693,10 +501,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">英雄联盟之决胜巅峰</a></li>
-              <li>2 <a href="#">超神机械师</a></li>
-              <li>3 <a href="#">逍遥梦路</a></li>
-              <li>4 <a href="#">和大罗一起踢球的日子</a></li>
+              <li th:each="typeE : ${typeEWeekTops}">
+                [[${typeEStat.count}]]<a th:href="@{/chapter(novelId=${typeE.id})}" th:text="${typeE.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -713,16 +520,9 @@
                   <a href="#">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">超神机械师</a></li>
-              <li>2 <a href="#">体坛之篮球教父</a></li>
-              <li>3 <a href="#">逍遥梦路</a></li>
-              <li>4 <a href="#">英雄联盟之决胜巅峰</a></li>
-              <li>5 <a href="#">网游之神级机械猎人</a></li>
-              <li>6 <a href="#">女帝直播攻略</a></li>
-              <li>7 <a href="#">全职高手</a></li>
-              <li>8 <a href="#">和大罗一起踢球的日子</a></li>
-              <li>9 <a href="#">光头武僧在都市</a></li>
-              <li>10 <a href="#">NBA超巨崛起</a></li>
+              <li th:each="typeE : ${typeEMonthTops}">
+                [[${typeEStat.count}]]<a th:href="@{/chapter(novelId=${typeE.id})}" th:text="${typeE.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -760,26 +560,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">末世生存大师</a></li>
-              <li>2 <a href="#">恐怖都市</a></li>
-              <li>3 <a href="#">史上最强店主</a></li>
-              <li>4 <a href="#">次元论坛</a></li>
-              <li>5 <a href="#">主神大道</a></li>
-              <li>6 <a href="#">电影世界大盗</a></li>
-              <li>7 <a href="#">两界搬运工</a></li>
-              <li>8 <a href="#">机破星河</a></li>
-              <li>9 <a href="#">君临诸天</a></li>
-              <li>10 <a href="#">抗日之铁血战将</a></li>
-              <li>11 <a href="#">奶爸的异界餐厅</a></li>
-              <li>12 <a href="#">我的末世基地车</a></li>
-              <li>13 <a href="#">系统的黑科技网吧</a></li>
-              <li>14 <a href="#">二次元的攻略生活</a></li>
-              <li>15 <a href="#">位面之纨绔生涯</a></li>
-              <li>16 <a href="#">黑暗王者</a></li>
-              <li>17 <a href="#">武侠世界大穿越</a></li>
-              <li>18 <a href="#">世界中转站</a></li>
-              <li>19 <a href="#">时空酒馆</a></li>
-              <li>20 <a href="#">重启末世</a></li>
+              <li th:each="typeF : ${typeFTotalTops}">
+                [[${typeFStat.count}]]<a th:href="@{/chapter(novelId=${typeF.id})}" th:text="${typeF.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -796,10 +579,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">末日轮盘</a></li>
-              <li>2 <a href="#">全息海贼时代</a></li>
-              <li>3 <a href="#">次元论坛</a></li>
-              <li>4 <a href="#">我的邻居是女妖</a></li>
+              <li th:each="typeF : ${typeFWeekTops}">
+                [[${typeFStat.count}]]<a th:href="@{/chapter(novelId=${typeF.id})}" th:text="${typeF.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -816,25 +598,9 @@
                   <a href="#">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">次元论坛</a></li>
-              <li>2 <a href="#">抗日之铁血战将</a></li>
-              <li>3 <a href="#">末日轮盘</a></li>
-              <li>4 <a href="#">魔鬼考卷</a></li>
-              <li>5 <a href="#">电影的世界</a></li>
-              <li>6 <a href="#">位面之纨绔生涯</a></li>
-              <li>7 <a href="#">系统的黑科技网吧</a></li>
-              <li>8 <a href="#">幻想世界大穿越</a></li>
-              <li>9 <a href="#">武侠世界大穿越</a></li>
-              <li>10 <a href="#">我的邻居是女妖</a></li>
-              <li>11 <a href="#">我在末日有基地</a></li>
-              <li>12 <a href="#">吞噬星空</a></li>
-              <li>13 <a href="#">长生九万年</a></li>
-              <li>14 <a href="#">仙王的日常生活</a></li>
-              <li>15 <a href="#">我的无限战舰</a></li>
-              <li>16 <a href="#">无敌战斗力系统</a></li>
-              <li>17 <a href="#">天行</a></li>
-              <li>18 <a href="#">科技图书馆</a></li>
-              <li>19 <a href="#">全息海贼时代</a></li>
+              <li th:each="typeF : ${typeFMonthTops}">
+                [[${typeFStat.count}]]<a th:href="@{/chapter(novelId=${typeF.id})}" th:text="${typeF.name}"></a>
+              </li>
               <li class="more">
                 <span>
                   <a href="#">更多</a>
@@ -872,27 +638,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">中华武将召唤系统</a></li>
-              <li>2 <a href="#">黄金渔场</a></li>
-              <li>3 <a href="#">大主宰</a></li>
-              <li>4 <a href="#">龙符</a></li>
-              <li>5 <a href="#">一念永恒</a></li>
-              <li>6 <a href="#">巫界术士</a></li>
-              <li>7 <a href="#">黑铁之堡</a></li>
-              <li>8 <a href="#">择天记</a></li>
-              <li>9 <a href="#">天域苍穹</a></li>
-              <li>10 <a href="#">完美世界</a></li>
-              <li>11 <a href="#">捡宝王</a></li>
-              <li>12 <a href="#">恐怖都市</a></li>
-              <li>13 <a href="#">剑王传说</a></li>
-              <li>14 <a href="#">武帝丹神</a></li>
-              <li>15 <a href="#">医统江山</a></li>
-              <li>16 <a href="#">重生日本当厨神</a></li>
-              <li>17 <a href="#">全能武侠系统</a></li>
-              <li>18 <a href="#">雪鹰领主</a></li>
-              <li>19 <a href="#">巫神纪</a></li>
-              <li>20 <a href="#">武侠世界自由行</a></li>
-              <li>21 <a href="#">山洼小富农</a></li>
+              <li th:each="complete : ${completeTotalTops}">
+                [[${completeStat.count}]]<a th:href="@{/chapter(novelId=${complete.id})}" th:text="${complete.name}"></a>
+              </li>
             </ul>
             <ul style="display:none;">
               <li class="ltitle">
@@ -904,12 +652,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">斗罗大陆II绝世唐门</a></li>
-              <li>2 <a href="#">黄金渔场</a></li>
-              <li>3 <a href="#">龙符</a></li>
-              <li>4 <a href="#">大唐将军烈</a></li>
-              <li>5 <a href="#">剑王传说</a></li>
-              <li>6 <a href="#">山洼小富农</a></li>
+              <li th:each="complete : ${completeWeekTops}">
+                [[${completeStat.count}]]<a th:href="@{/chapter(novelId=${complete.id})}" th:text="${complete.name}"></a>
+              </li>
             </ul>
             <ul style="display:none;">
               <li class="ltitle">
@@ -921,21 +666,9 @@
                   <a href="#">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">黄金渔场</a></li>
-              <li>2 <a href="#">龙符</a></li>
-              <li>3 <a href="#">斗罗大陆II绝世唐门</a></li>
-              <li>4 <a href="#">唐砖</a></li>
-              <li>5 <a href="#">官道无疆</a></li>
-              <li>6 <a href="#">大主宰</a></li>
-              <li>7 <a href="#">剑王传说</a></li>
-              <li>8 <a href="#">斗罗大陆</a></li>
-              <li>9 <a href="#">吞噬星空</a></li>
-              <li>10 <a href="#">大唐将军烈</a></li>
-              <li>11 <a href="#">重生日本当厨神</a></li>
-              <li>12 <a href="#">寂静农场</a></li>
-              <li>13 <a href="#">山洼小富农</a></li>
-              <li>14 <a href="#">长生九万年</a></li>
-              <li>15 <a href="#">全职高手</a></li>
+              <li th:each="complete : ${completeMonthTops}">
+                [[${completeStat.count}]]<a th:href="@{/chapter(novelId=${complete.id})}" th:text="${complete.name}"></a>
+              </li>
             </ul>
             <ul style="display:none;">
               <li class="ltitle">
@@ -963,27 +696,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">圣墟</a></li>
-              <li>2 <a href="#">龙王传说</a></li>
-              <li>3 <a href="#">三寸人间</a></li>
-              <li>4 <a href="#">天下第九</a></li>
-              <li>5 <a href="#">飞剑问道</a></li>
-              <li>6 <a href="#">我是至尊</a></li>
-              <li>7 <a href="#">凡人修仙之仙界篇</a></li>
-              <li>8 <a href="#">元尊</a></li>
-              <li>9 <a href="#">大道朝天</a></li>
-              <li>10 <a href="#">仙界独尊</a></li>
-              <li>11 <a href="#">伏天氏</a></li>
-              <li>12 <a href="#">万古神帝</a></li>
-              <li>13 <a href="#">总裁校花赖上我</a></li>
-              <li>14 <a href="#">玄界之门</a></li>
-              <li>15 <a href="#">中华武将召唤系统</a></li>
-              <li>16 <a href="#">斗战狂潮</a></li>
-              <li>17 <a href="#">一剑飞仙</a></li>
-              <li>18 <a href="#">抗日之将胆传奇</a></li>
-              <li>19 <a href="#">黄金渔场</a></li>
-              <li>20 <a href="#">全职法师</a></li>
-              <li>21 <a href="#">大主宰</a></li>
+              <li th:each="all : ${allTotalTops}">
+                [[${allStat.count}]]<a th:href="@{/chapter(novelId=${all.id})}" th:text="${all.name}"></a>
+              </li>
             </ul>
             <ul style="display:none;">
               <li class="ltitle">
@@ -995,27 +710,9 @@
                   <a href="####" alt="3">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">武神主宰</a></li>
-              <li>2 <a href="#">斗罗大陆II绝世唐门</a></li>
-              <li>3 <a href="#">天火大道</a></li>
-              <li>4 <a href="#">全职法师</a></li>
-              <li>5 <a href="#">我是至尊</a></li>
-              <li>6 <a href="#">重生之魔教教主</a></li>
-              <li>7 <a href="#">我的1979</a></li>
-              <li>8 <a href="#">末日轮盘</a></li>
-              <li>9 <a href="#">超级怪兽工厂</a></li>
-              <li>10 <a href="#">黑金科技</a></li>
-              <li>11 <a href="#">全息海贼时代</a></li>
-              <li>12 <a href="#">三寸人间</a></li>
-              <li>13 <a href="#">重生完美时代</a></li>
-              <li>14 <a href="#">重生之最强人生</a></li>
-              <li>15 <a href="#">天道图书馆</a></li>
-              <li>16 <a href="#">宠物天王</a></li>
-              <li>17 <a href="#">夜行者：平妖二十年</a></li>
-              <li>18 <a href="#">凡人修仙之仙界篇</a></li>
-              <li>19 <a href="#">仙界独尊</a></li>
-              <li>20 <a href="#">黄金渔场</a></li>
-              <li>21 <a href="#">龙符</a></li>
+              <li th:each="all : ${allWeekTops}">
+                [[${allStat.count}]]<a th:href="@{/chapter(novelId=${all.id})}" th:text="${all.name}"></a>
+              </li>
             </ul>
             <ul style="display:none;">
               <li class="ltitle">
@@ -1027,27 +724,9 @@
                   <a href="#">日</a>
                 </span>
               </li>
-              <li>1 <a href="#">凡人修仙之仙界篇</a></li>
-              <li>2 <a href="#">修罗武神</a></li>
-              <li>3 <a href="#">飞剑问道</a></li>
-              <li>4 <a href="#">黄金渔场</a></li>
-              <li>5 <a href="#">圣墟</a></li>
-              <li>6 <a href="#">龙符</a></li>
-              <li>7 <a href="#">道君</a></li>
-              <li>8 <a href="#">环保大师</a></li>
-              <li>9 <a href="#">交锋</a></li>
-              <li>10 <a href="#">仙界独尊</a></li>
-              <li>11 <a href="#">次元论坛</a></li>
-              <li>12 <a href="#">我是至尊</a></li>
-              <li>13 <a href="#">都市超级医圣</a></li>
-              <li>14 <a href="#">抗日之铁血战将</a></li>
-              <li>15 <a href="#">朝阳警事</a></li>
-              <li>16 <a href="#">女总裁的全能兵王</a></li>
-              <li>17 <a href="#">超级全能巨星</a></li>
-              <li>18 <a href="#">超神机械师</a></li>
-              <li>19 <a href="#">万古神帝</a></li>
-              <li>20 <a href="#">黑金科技</a></li>
-              <li>21 <a href="#">体坛之篮球教父</a></li>
+              <li th:each="all : ${allMonthTops}">
+                [[${allStat.count}]]<a th:href="@{/chapter(novelId=${all.id})}" th:text="${all.name}"></a>
+              </li>
             </ul>
             <ul style="display:none;">
               <li class="ltitle">

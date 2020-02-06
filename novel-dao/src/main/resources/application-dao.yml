@@ -4,7 +4,6 @@ spring:
     ### mybatis
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://192.16.1.200:3306/nx-purchasesale?characterEncoding=UTF-8&allowMultiQueries=true
     url: jdbc:mysql://127.0.0.1:3306/novel?characterEncoding=UTF-8&allowMultiQueries=true
     username: root
     password: dev123456
@@ -54,9 +53,9 @@ spring:
       host: 127.0.0.1
       port: 27017
       database: test
-      authentication-database: test
-      username: root
-      password: dev123456
+#      authentication-database: test
+#      username: root
+#      password: dev123456
 
 
 

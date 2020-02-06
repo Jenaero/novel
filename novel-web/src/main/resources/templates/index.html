@@ -215,7 +215,7 @@
                 <h2>最新入库小说</h2>
                 <ul>
                   <li th:each="add : ${lastAdds}">
-                    <span class="s1" th:text="'['+${add.type}+']'">[玄幻]</span>
+                    <span class="s1" th:text="'['+${add.type}+']'" style="width: 60px">[玄幻]</span>
                     <span class="s2"><a th:href="@{/chapter(novelId=${add.id})}" th:text="${add.name}">真武世界</a></span>
                     <span class="s5" th:text="${add.author}">青石细语</span></li>
                 </ul>

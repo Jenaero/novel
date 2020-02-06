@@ -77,12 +77,71 @@
     limit #{pager.offset},#{pager.pageSize}
   </select>
 
+  <select id="selectPageByStatusOrderByTotalClick" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+    select * from novel
+    <where>
+      <if test="t != null and t != '' ">
+        `status` = #{t}
+      </if>
+    </where>
+    order by total_click desc
+    limit #{pager.offset},#{pager.pageSize}
+  </select>
+
+  <select id="selectPageByStatusOrderByMonthClick" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+    select * from novel
+    <where>
+      <if test="t != null and t != '' ">
+        `status` = #{t}
+      </if>
+    </where>
+    order by month_click desc
+    limit #{pager.offset},#{pager.pageSize}
+  </select>
+
+
+  <select id="selectPageByStatusOrderByWeekClick" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+    select * from novel
+    <where>
+      <if test="t != null and t != '' ">
+        `status` = #{t}
+      </if>
+    </where>
+    order by week_click desc
+    limit #{pager.offset},#{pager.pageSize}
+  </select>
+
+
   <select id="selectPageNovelsByTypes" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
       <if test="list != null and list.size() > 0 ">
         <foreach collection="list" index="index" item="item" separator="union all">
           (select * from novel where type like '%${item}%' limit #{pager.offset},#{pager.pageSize})
         </foreach>
       </if>
+  </select>
+
+  <select id="selectPageByTypesOrderByTotalClick" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+    <if test="list != null and list.size() > 0 ">
+      <foreach collection="list" index="index" item="item" separator="union all">
+        (select * from novel where type like '%${item}%' order by total_click desc limit #{pager.offset},#{pager.pageSize})
+      </foreach>
+    </if>
+  </select>
+
+  <select id="selectPageByTypesOrderByMonthClick" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+    <if test="list != null and list.size() > 0 ">
+      <foreach collection="list" index="index" item="item" separator="union all">
+        (select * from novel where type like '%${item}%' order by month_click desc limit #{pager.offset},#{pager.pageSize})
+      </foreach>
+    </if>
+  </select>
+
+  <select id="selectPageByTypesOrderByWeekClick" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Page" >
+    <if test="list != null and list.size() > 0 ">
+      <foreach collection="list" index="index" item="item" separator="union all">
+        (select * from novel where type like '%${item}%' order by week_click desc limit #{pager.offset},#{pager.pageSize})
+      </foreach>
+    </if>
   </select>
 
   <select id="selectByNovelUrl" resultMap="BaseResultMap" parameterType="com.xiaokedou.novel.common.base.Pager" >
