@@ -53,9 +53,9 @@ spring:
       host: 127.0.0.1
       port: 27017
       database: test
-#      authentication-database: test
-#      username: root
-#      password: dev123456
+      authentication-database: test
+      username: root
+      password: dev123456
 
 
 
