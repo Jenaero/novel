@@ -11,6 +11,6 @@ spring:
 #  level: debug
 
 
-novel:
-  defaultNovelId: 2019122517010269
-  defaultChapterId: 2019122517010975
+novel: #元尊
+  defaultNovelId: 2020012819052215
+  defaultChapterId: 2020012819052303
