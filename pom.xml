@@ -49,7 +49,7 @@
 		<druid.version>1.1.12</druid.version>
 		<hutool.version>3.0.7</hutool.version>
 		<log4j-over-slf4j.version>1.7.25</log4j-over-slf4j.version>
-		<jsoup.version>1.12.1</jsoup.version>
+		<jsoup.version>1.15.3</jsoup.version>
 		<httpclient.version>4.5.2</httpclient.version>
 		<httpcore.version>4.4.4</httpcore.version>
 		<dom4j.version>1.6.1</dom4j.version>
